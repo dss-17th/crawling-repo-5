@@ -3,18 +3,19 @@ US stock service crawling project
 
 # Project schedule
 
-# Crawling
+# 1. Crawling
   - stock news
   - other
 
-# Data base system
+# 2. Data base system
   - mysql
   - other
 
-# Data analysis
+# 3. Data analysis
   - EDA
   - regression analysis
   - other
 
-# Service
+# 4. Service
   - chatbot
+  - Web service
