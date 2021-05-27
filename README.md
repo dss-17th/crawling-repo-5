@@ -4,6 +4,10 @@ US stock service crawling project
 # Project schedule
 
 # 1. Crawling
+------------------------
+####installing 
+#####$ pip install BeautifulSoup
+------------------------
   - stock news
   - other
 
