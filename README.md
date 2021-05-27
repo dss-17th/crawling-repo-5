@@ -5,8 +5,8 @@ US stock service crawling project
 
 # 1. Crawling
 ------------------------
-####installing 
-#####$ pip install BeautifulSoup
+installing 
+$ pip install BeautifulSoup
 ------------------------
   - stock news
   - other
