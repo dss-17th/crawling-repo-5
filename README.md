@@ -5,8 +5,11 @@ US stock service crawling project
 
 # 1. Crawling
 ------------------------
-installing 
-$ pip install BeautifulSoup
+* Using library
+
+- import requests
+- import pandas as pd
+- from bs4 import BeautifulSoup
 ------------------------
   - stock news
   - other
