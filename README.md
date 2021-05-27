@@ -11,8 +11,10 @@ US stock service crawling project
   - import pandas as pd
   - from bs4 import BeautifulSoup
 ------------------------
-  - stock news
-  - other
+ * Crawling Data
+    
+    - stock news
+    - other
 
 # 2. Data base system
   - mysql
