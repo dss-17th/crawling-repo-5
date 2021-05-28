@@ -1,7 +1,7 @@
 # Crawling_project
 US stock service crawling project
 
-# Project schedule
+# Project Steps
 
 # 1. Crawling
 ------------------------
