@@ -12,8 +12,10 @@ US stock service crawling project
   - from bs4 import BeautifulSoup
 ------------------------
  * Crawling Data
-    
+   
     - stock news
+      - investing domain URL
+      - naver stock
     - other
 
 # 2. Data base system
