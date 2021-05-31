@@ -17,7 +17,11 @@ US stock service crawling project
       - investing domain URL
       - naver stock
     - other
-
+----------------------  
+ * Stock Data use a FinanceDataReader Python library
+ 
+    - How to use
+      - import FinanceDataReader as fdr
 # 2. Data base system
   - mysql
   - other
