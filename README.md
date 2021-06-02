@@ -26,6 +26,7 @@ US stock service crawling project
       - S&P500
 # 2. Data base system
   - mysql
+      -  <img src="./imgs/ERD.png" style="width:100%;">
   - other
 
 # 3. Data analysis
