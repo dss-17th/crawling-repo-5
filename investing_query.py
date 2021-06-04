@@ -49,4 +49,7 @@ for data in symbols.values:
         print([a, len(frames)])
         break
     print(a)
-    a += 1        
+    a += 1
+    
+dfs = pd.DataFrame(dfs)
+dfs.to_csv('investing_query')
