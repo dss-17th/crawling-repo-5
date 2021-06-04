@@ -52,4 +52,5 @@ for data in symbols.values:
     a += 1
     
 dfs = pd.DataFrame(dfs)
+dfs.replace(columns = {0:'Symbol', 1:'Query'})
 dfs.to_csv('investing_query')
