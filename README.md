@@ -23,7 +23,7 @@ US stock service crawling project
     - How to use
       - import FinanceDataReader as fdr
     - Target data
-      - S&P500
+      - daily S&P500 data
 # 2. Data base system
   - mysql
       -  <img src="./imgs/ERD.png" style="width:100%;">
