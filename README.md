@@ -26,7 +26,11 @@ US stock service crawling project
       - daily S&P500 data
 # 2. Data base system
   - mysql
-      -  <img src="./imgs/ERD.png" style="width:100%;">
+    
+    - ERD
+ 
+![initial](https://user-images.githubusercontent.com/80030759/120990458-8b036780-c7bb-11eb-95fc-2ee01190bcaf.png)
+
   - other
 
 # 3. Data analysis
