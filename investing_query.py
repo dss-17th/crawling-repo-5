@@ -41,7 +41,7 @@ for data in symbols.values:
             continue
         
         
-        investing_query = re.findall('equities\/([0-9a-zA-Z\-]+)', datas[i].get("href"))[0]
+        investing_query = re.findall('equities\/([\S]+)', datas[i].get("href"))[0]
         frames.append([symbol, investing_query])
         #break
         
