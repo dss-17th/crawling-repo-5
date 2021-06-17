@@ -36,7 +36,7 @@ def crawlingquery(symbol):
             continue
 
 
-        investing_query = re.findazll('equities\/([\S]+)', datas[i].get("href"))[0]
+        investing_query = re.findall('equities\/([\S]+)', datas[i].get("href"))[0]
         return investing_query
 
 def crawling_investing(symbol, query):
