@@ -237,7 +237,7 @@ else :
     for data in datas :
         crawling_investings2[crawling_investings2['symbol'] == data[0]] =  data
         
-    crawling_investings2.to_csv('../datas/crawling_investing.csv', index=False)
+    crawling_investings2.to_csv('../datas/crawling_investing2.csv', index=False)
     print('update crawling_investing2')
     a = 1
         
