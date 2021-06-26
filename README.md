@@ -29,7 +29,7 @@ US stock service crawling project
     
     - ERD
  
-![initial](https://user-images.githubusercontent.com/80030759/120990458-8b036780-c7bb-11eb-95fc-2ee01190bcaf.png)
+![initial](https://user-images.githubusercontent.com/80030759/122144633-d3431980-ce8e-11eb-957c-71e41d04d96f.png)
 
   - other
 
