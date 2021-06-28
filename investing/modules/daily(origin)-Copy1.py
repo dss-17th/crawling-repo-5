@@ -147,17 +147,17 @@ def crawling_investing2(symbol, query):
                 except:
                     first_realprofit = second_realprofit = thirth_realprofit = fourth_realprofit = np.nan
 
-        dfs = [symbol, first_date, first_sales, first_profit, first_operating, first_realprofit, \
-                   second_date, second_sales, second_profit, second_operating, second_realprofit, \
-                   thirth_date, thirth_sales, thirth_profit, thirth_operating, thirth_realprofit, \
-                   fourth_date, fourth_sales, fourth_profit, fourth_operating, fourth_realprofit,]
+        dfs = [symbol, first_date, first_sales, first_profit, first_operating, first_realprofit]
+        dfs = [symbol, second_date, second_sales, second_profit, second_operating, second_realprofit]
+        dfs = [symbol, thirth_date, thirth_sales, thirth_profit, thirth_operating, thirth_realprofit]
+        dfs = [symbol, fourth_date, fourth_sales, fourth_profit, fourth_operating, fourth_realprofit]
 
                 
     except :
-        dfs = [symbol, np.nan, np.nan, np.nan, np.nan, np.nan, \
-                   np.nan, np.nan, np.nan, np.nan, np.nan, \
-                   np.nan, np.nan, np.nan, np.nan, np.nan, \
-                   np.nan, np.nan, np.nan, np.nan, np.nan,]
+        dfs = [symbol, np.nan, np.nan, np.nan, np.nan, np.nan]
+        dfs = [symbol, np.nan, np.nan, np.nan, np.nan, np.nan]
+        dfs = [symbol, np.nan, np.nan, np.nan, np.nan, np.nan]
+        dfs = [symbol, np.nan, np.nan, np.nan, np.nan, np.nan]
 
     return dfs
 
