@@ -37,6 +37,8 @@ US stock service crawling project
   - EDA
   - regression analysis
   - other
+  - Flask
+  - html
 
 # 4. Service
   - chatbot
