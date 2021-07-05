@@ -41,3 +41,4 @@ US stock service crawling project
 # 4. Service
   - chatbot
   - DashBoard
+    - chart.js
