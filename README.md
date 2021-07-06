@@ -34,13 +34,12 @@ US stock service crawling project
   - other
 
 # 3. Data analysis
-  - EDA
-  - regression analysis
-  - other
   - Flask
-  - html
+    - Chart.js (EDA)
+  - MySQL
 
 # 4. Service
   - chatbot
   - DashBoard
     - chart.js
+    - BootStrap
