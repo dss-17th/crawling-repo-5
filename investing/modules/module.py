@@ -163,4 +163,4 @@ def crawling_investing2(symbol, query):
         dfs3 = [symbol, np.nan, np.nan, np.nan, np.nan, np.nan]
         dfs4 = [symbol, np.nan, np.nan, np.nan, np.nan, np.nan]
 
-    return dfs1  # , dfs2, dfs3, dfs4
+    return dfs1 , dfs2, dfs3, dfs4
