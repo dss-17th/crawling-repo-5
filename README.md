@@ -2,6 +2,11 @@
 US stock service crawling project
 
 # Project Steps
+# service architecture
+![initial](https://user-images.githubusercontent.com/80030759/124936355-6a8c2e80-e041-11eb-94fd-8f612cdda68c.png)
+
+
+
 
 # 1. Crawling
 ------------------------
