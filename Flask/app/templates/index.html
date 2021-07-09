@@ -42,15 +42,15 @@
     <chart class>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <canvas id="myChartone" width="=600" height='400'></canvas>
+                    <div class="col-lg-7">
+                        <canvas id="myChartone" width="=600" height='150'></canvas>
                     </div>
-                    <div class="col-lg-4">
-                        <canvas id="myCharttwo" width="=600" height='400'></canvas>
-                    </div>
+                    <div class="col-lg-5">
+                        <canvas id="myCharttwo" width="=600" height='215'></canvas>
+                    <!-- </div>
                     <div class="col-lg-4">
                         <canvas id="myChartthree" width="=600" height='400'></canvas>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!--select button 생성 -->
@@ -65,13 +65,13 @@
                     </div>
                 </div>
             </select>  -->
-            <div class="chart-container" style="position: relative; auto;">
+            <div class="chart-container" style="position: relative;">
                 <canvas id="myChartone"></canvas>
             </div>
         <script>
             var myChartone = document.getElementById('myChartone').getContext('2d');
             var myCharttwo = document.getElementById('myCharttwo').getContext('2d');
-            var myChartthree = document.getElementById('myChartthree').getContext('2d');
+            // var myChartthree = document.getElementById('myChartthree').getContext('2d');
 
             var barChart = new Chart(myChartone, {
                 type : 'line',
@@ -118,7 +118,7 @@
                     responsive: true,
                     plugins: {
                     legend: {
-                        position: 'top',
+                        position: 'right',
                     },
                     title: {
                         display: true,
@@ -127,26 +127,26 @@
                     }
                 },
             });
-            var barCharthree = new Chart(myChartthree, {
-                type : 'bar',
-                data : {
-                    labels : ['a', 'b', 'c', 'd',' e'],
-                    datasets : [{
-                        label : 'ChartJS',
-                        data : [1000,300,200,1000,10000]
-                    }]
-                },
-                options: {
-                    responsive:true,
-                    scales: {
-                        yAxes : [{
-                            ticks: {
-                                beginAtzero : true
-                            }
-                        }]
-                    }
-                }
-        });
+        //     var barCharthree = new Chart(myChartthree, {
+        //         type : 'bar',
+        //         data : {
+        //             labels : ['a', 'b', 'c', 'd',' e'],
+        //             datasets : [{
+        //                 label : 'ChartJS',
+        //                 data : [1000,300,200,1000,10000]
+        //             }]
+        //         },
+        //         options: {
+        //             responsive:true,
+        //             scales: {
+        //                 yAxes : [{
+        //                     ticks: {
+        //                         beginAtzero : true
+        //                     }
+        //                 }]
+        //             }
+        //         }
+        // });
         </script>
     </chart>
     <news class>
