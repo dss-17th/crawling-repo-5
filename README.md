@@ -48,5 +48,6 @@ US stock service crawling project
   - DashBoard
     - chart.js
     - BootStrap
+![initial](https://user-images.githubusercontent.com/80030759/125158027-359aeb80-e1a9-11eb-9b80-411d9fe97e6e.png)
 ![initial](https://user-images.githubusercontent.com/80030759/125157072-c79ff580-e1a3-11eb-833c-619ada65766d.png)
 
