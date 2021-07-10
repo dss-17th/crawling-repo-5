@@ -1,14 +1,15 @@
 # Crawling_project
 US stock service crawling project
 
-- Project schedule ~ 7/9 BETA version 
-: S&P500 main page
-: TSLA main page
+* Project schedule 
+- ~ 7/9 BETA version 
+, S&P500 main page
+, TSLA main page
 
 - end Project : 7/23
-: using a crontap Auto
-: Scan all s&p500s
-: kakao chatbot
+, using a crontap Auto
+, Scan all s&p500s
+, kakao chatbot
 
 # Project Steps
 # service architecture
