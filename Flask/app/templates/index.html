@@ -27,7 +27,7 @@
             <header class="masthead bg-primary text-white text-center">
                 <div class="container d-flex align-items-center flex-column">
                     <!-- Masthead Heading-->
-                    <h1 class="masthead-heading text-uppercase mb-0">AAPL      APPLE inc.</h1> <!-- symbol, name 입력-->
+                    <h1 class="masthead-heading text-uppercase mb-0">TSLA      Tesla</h1> <!-- symbol, name 입력-->
                     <!-- Icon Divider-->
                     <div class="divider-custom divider-light">
                         <div class="divider-custom-line"></div>
@@ -35,8 +35,8 @@
                         <div class="divider-custom-line"></div>
                     </div>
                     <!-- Masthead Subheading-->
-                    <p class="masthead-subheading font-weight-light mb-0 text-left">SECTOR  Information Technology</p>
-                    <p class="masthead-subheading font-weight-light mb-0 text-left">INDUSTRY  Technology Hardware, Storage & Peripherals</p>
+                    <p class="masthead-subheading font-weight-light mb-0 text-left">SECTOR  'Consumer Discretionary'</p>
+                    <p class="masthead-subheading font-weight-light mb-0 text-left">INDUSTRY  'Automobile Manufacturers'</p>
                 </div>
             </header>
     <chart class>
@@ -76,61 +76,61 @@
             var barChart = new Chart(myChartone, {
                 type : 'line',
                 data : {
-                    labels : ['a','b','c','d','e','a','b','c','d','e','f','g','h','i',1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1],
-                    datasets : [{
+                     datasets : [{
                         label : 'Close',
-                        data :{{data2}}
-                    }]
-                }
-                // options: {
-                //     scales:
-                //         yAxes : [{
-                //             ticks: {
-                //                 display : false
-                //             }
-                //         }],
-                //         xAxes : [{
-                //             type: 'time',
-                //             ticks:{
-                //                 display : true
-                //             }
-                //         }]
-                //     }
-                }
-            });
+                        data : [{x:"2021.6.1", y:623.9},
+                        {x:"2021.6.2", y:605.12},
+                        {x:"2021.6.3", y:572.84},
+                        {x:"2021.6.4", y:599.05},
+                        {x:"2021.6.7", y:605.13},
+                        {x:"2021.6.8", y:603.59},
+                        {x:"2021.6.9", y:598.78},
+                        {x:"2021.6.10", y:610.12},
+                        {x:"2021.6.11", y:609.89},
+                        {x:"2021.6.14", y:617.69},
+                        {x:"2021.6.15", y:599.36},
+                        {x:"2021.6.16", y:604.87},
+                        {x:"2021.6.17", y:616.6},
+                        {x:"2021.6.18", y:623.31},
+                        {x:"2021.6.21", y:620.83},
+                        {x:"2021.6.22", y:623.71},
+                        {x:"2021.6.23", y:656.57},
+                        {x:"2021.6.24", y:679.82},
+                        {x:"2021.6.25", y:671.87},
+                        {x:"2021.6.28", y:691}]
+                     }],
+                    }
+                });
             var barChartwo = new Chart(myCharttwo, {
                 type : 'bar',
                 data : {
-                    labels : ['a', 'b', 'c', 'd',' e'],
                     datasets : [{
-                        label : 'ChartJS',
+                        label : 'Market capitalization',
                         data : [
-                            1000,
-                            -300,
-                            200,
-                            -1000,
-                            1000
-                        ]
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    elements: {
-                    bar: {
-                        borderWidth: 2,
-                    }
-                    },
-                    responsive: true,
-                    plugins: {
-                    legend: {
-                        position: 'right',
-                    },
-                    title: {
-                        display: true,
-                        // text: 'Chart.js Horizontal Bar Chart'
-                    }
-                    }
-                },
+                            {x:"TSLA", y:18428511470},
+                            {x:"GM", y:2408113644},
+                            {x:"F", y:918078226}],
+                            
+                    }],
+                }
+                // options: {
+                //     indexAxis: 'y',
+                //     elements: {
+                //     bar: {
+                //         borderWidth: 2,
+                //     }
+                //     },
+                //     responsive: true,
+                //     plugins: {
+                //     legend: {
+                //         position: 'right',
+                //     },
+                //     title: {
+                //         display: true,
+                //         text: 'Market capitalization compared to the previous day'
+                //     }
+                //     }
+                // },
             });
         //     var barCharthree = new Chart(myChartthree, {
         //         type : 'bar',
@@ -245,8 +245,15 @@
         </div>
         <!-- About Section Content-->
         <div class="row">
-            <div class="col-lg-4 ms-auto text-center"><p class="lead">당신이 잠든 사이 일어난 정보를 전달 드립니다.</p></div>
-            <div class="col-lg-4 me-auto text-center"><p class="lead">S&P500에 대한 정보입니다.</p></div>
+            <div class="col-lg-12 ms-auto text-center"><p class="lead">
+                당신이 잠든 사이 일어난 정보를 전달 드립니다.</p></div>
+        <div class="row">
+            <div class="col-lg-12 ms-auto text-center"><p class="lead">
+                S&P500에 대한 정보입니다.</p></div>
+        <div class="row">
+            <div class="col-lg-12 ms-auto text-center"><p class="lead">
+                        Beta version </p></div>
+            <!-- <div class="col-lg-4 me-auto text-center"><p class="lead">S&P500에 대한 정보입니다.</p></div> -->
         </div>
         <!-- About Section Button-->
         <!-- <div class="text-center mt-4">

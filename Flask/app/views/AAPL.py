@@ -3,6 +3,8 @@ from app.modules import MysqlModule
 from app import app
 
 
+
+
 @app.route("/<symbol>") 
 def page(symbol):
     db_class= MysqlModule.Database()
