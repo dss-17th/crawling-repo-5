@@ -21,7 +21,7 @@ app.config.update(TEMPLATES_AUTO_RELOAD=True, DEBUG=True,)
 #client_1 = {"username": "dss", "pw": "dsspw", "ip": "3.36.218.2"}
 #app.config["MONGOALCHEMY_DATABASE"] = 'mongo' # mongo 라는 db를 사용
 #app.config["MONGOALCHEMY_CONNECTION_STRING"] = f'mongodb://{client_1["username"]}:{client_1["pw"]}@{client_1["ip"]}:27017'
-mongo_db = MongoAlchemy(app)
+#mongo_db = MongoAlchemy(app)
 
 #setting mysql
 #client_2 = {"username": "root", "pw": "dss", "ip": "3.36.218.2"}
@@ -57,6 +57,7 @@ mongo_db = MongoAlchemy(app)
 #     return render_template("index.html")
 
 from app.views import AAPL
+from app.views import SP500
 
 # @app.route("/predict")
 # def predict():
