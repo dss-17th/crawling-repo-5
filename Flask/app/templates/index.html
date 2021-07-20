@@ -83,11 +83,8 @@
             </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/
-        bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
-        crossorigin="anonymous">
-        </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
 
 
 
@@ -112,26 +109,7 @@
                 data : {
                      datasets : [{
                         label : 'Close',
-                        data : [{x:"2021.6.1", y:623.9},
-                        {x:"2021.6.2", y:605.12},
-                        {x:"2021.6.3", y:572.84},
-                        {x:"2021.6.4", y:599.05},
-                        {x:"2021.6.7", y:605.13},
-                        {x:"2021.6.8", y:603.59},
-                        {x:"2021.6.9", y:598.78},
-                        {x:"2021.6.10", y:610.12},
-                        {x:"2021.6.11", y:609.89},
-                        {x:"2021.6.14", y:617.69},
-                        {x:"2021.6.15", y:599.36},
-                        {x:"2021.6.16", y:604.87},
-                        {x:"2021.6.17", y:616.6},
-                        {x:"2021.6.18", y:623.31},
-                        {x:"2021.6.21", y:620.83},
-                        {x:"2021.6.22", y:623.71},
-                        {x:"2021.6.23", y:656.57},
-                        {x:"2021.6.24", y:679.82},
-                        {x:"2021.6.25", y:671.87},
-                        {x:"2021.6.28", y:691}]
+                        data : [{x:"-", y:0}]
                                 }]
                         }
             });
@@ -170,102 +148,84 @@
         // });
 
         function changeWeek(){
-            const updatdate = {
-                datasets : [{
-                label : 'Close',
-                data : [{x:"2021.6.1", y:623.9},
-                        {x:"2021.6.2", y:605.12},
-                        {x:"2021.6.3", y:572.84},
-                        {x:"2021.6.4", y:599.05},
-                        {x:"2021.6.7", y:605.13},
-                        {x:"2021.6.8", y:603.59},
-                        {x:"2021.6.9", y:598.78},
-                        {x:"2021.6.10", y:610.12},
-                        {x:"2021.6.11", y:609.89},
-                        {x:"2021.6.14", y:617.69},
-                        {x:"2021.6.15", y:599.36},
-                        {x:"2021.6.16", y:604.87},
-                        {x:"2021.6.17", y:616.6},
-                        {x:"2021.6.18", y:623.31},
-                        {x:"2021.6.21", y:620.83},
-                        {x:"2021.6.22", y:623.71},
-                        {x:"2021.6.23", y:656.57},
-                        {x:"2021.6.24", y:679.82},
-                        {x:"2021.6.25", y:671.87},
-                        {x:"2021.6.28", y:691}]
-                            }]
-                };
-            myChartone1.config.data = updatdate;
-            myChartone1.update();
-            };
-
-            function changeMonth(){
+            var term = 'week';
+            console.log(term);
+            var url = "/data/<symbol>?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
                 const updatdate = {
-                    datasets : [{
-                    label : 'Close',
-                    data : [{x:"2021.6.1", y:623.9},
-                            {x:"2021.6.2", y:605.12},
-                            {x:"2021.6.3", y:572.84},
-                            {x:"2021.6.4", y:599.05},
-                            {x:"2021.6.7", y:605.13},
-                            {x:"2021.6.8", y:603.59},
-                            {x:"2021.6.9", y:598.78},
-                            {x:"2021.6.10", y:610.12}]
-                                }]
-                };
-            myChartone1.config.data = updatdate;
-            myChartone1.update();
-            };
-
-            function changeMonth3(){
-            const updatdate = {
                 datasets : [{
                 label : 'Close',
-                data : [{x:"2021.6.2", y:605.12},
-                        {x:"2021.6.3", y:572.84},
-                        {x:"2021.6.4", y:599.05},
-                        {x:"2021.6.7", y:605.13},
-                        {x:"2021.6.8", y:603.59},
-                        {x:"2021.6.9", y:598.78},
-                        {x:"2021.6.10", y:610.12},
-                        {x:"2021.6.11", y:609.89},
-                        {x:"2021.6.14", y:617.69},
-                        {x:"2021.6.15", y:599.36},
-                        {x:"2021.6.16", y:604.87},
-                        {x:"2021.6.17", y:616.6},
-                        {x:"2021.6.18", y:623.31},
-                        {x:"2021.6.21", y:620.83},
-                        {x:"2021.6.22", y:623.71},
-                        {x:"2021.6.23", y:656.57}]
-                            }]
-                };
-            myChartone1.config.data = updatdate;
-            myChartone1.update();
-            };
-
-            function changeYear(){
-            const updatdate = {
+                data : datas}]};
+                myChartone1.config.data = updatdate;
+                
+                myChartone1.update();})};
+        
+        function changeMonth(){
+            var term = 'month';
+            console.log(term);
+            var url = "/data/<symbol>?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
+                const updatdate = {
                 datasets : [{
                 label : 'Close',
-                data : [{x:"2021.6.1", y:623.9},
-                        {x:"2021.6.2", y:605.12},
-                        {x:"2021.6.3", y:572.84},
-                        {x:"2021.6.4", y:599.05},
-                        {x:"2021.6.7", y:605.13},
-                        {x:"2021.6.8", y:603.59},
-                        {x:"2021.6.9", y:598.78},
-                        {x:"2021.6.10", y:610.12},
-                        {x:"2021.6.11", y:609.89},
-                        {x:"2021.6.14", y:617.69},
-                        {x:"2021.6.15", y:599.36},
-                        {x:"2021.6.16", y:604.87},
-                        {x:"2021.6.17", y:616.6},]
-                            }]
-                };
-            myChartone1.config.data = updatdate;
-            myChartone1.update();
-            };
+                data : datas}]};
+                myChartone1.config.data = updatdate;
+                
+                myChartone1.update();})};
 
+        function changeMonth3(){
+            var term = 'month3';
+            console.log(term);
+            var url = "/data/<symbol>?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
+                const updatdate = {
+                datasets : [{
+                label : 'Close',
+                data : datas}]};
+                myChartone1.config.data = updatdate;
+                
+                myChartone1.update();})};
+        
+        function changeYear(){
+            var term = 'year';
+            console.log(term);
+            var url = "/data/<symbol>?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
+                const updatdate = {
+                datasets : [{
+                label : 'Close',
+                data : datas}]};
+                myChartone1.config.data = updatdate;
+                
+                myChartone1.update();})};
+
+            
+
+        $("#week").click();
         </script>
     </chart>
     <news class>
