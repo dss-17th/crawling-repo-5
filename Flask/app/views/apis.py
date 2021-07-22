@@ -20,25 +20,25 @@ def data(symbol):
     if term == 'week':
         sql = f"SELECT * \
         FROM US_Stock.daily \
-        WHERE Symbol = 'AAPL'\
+        WHERE Symbol = '{symbol}'\
         order by DATE DESC\
         LIMIT 6;"
     elif term == 'month':
         sql = f"SELECT * \
         FROM US_Stock.daily \
-        WHERE Symbol = 'AAPL'\
+        WHERE Symbol = '{symbol}'\
         order by DATE DESC\
         LIMIT 22;"
     elif term == 'month3':
         sql = f"SELECT * \
         FROM US_Stock.daily \
-        WHERE Symbol = 'AAPL'\
+        WHERE Symbol = '{symbol}'\
         order by DATE DESC\
         LIMIT 64;"
     elif term == 'year':
         sql = f"SELECT * \
         FROM US_Stock.daily \
-        WHERE Symbol = 'AAPL'\
+        WHERE Symbol = '{symbol}'\
         order by DATE DESC\
         LIMIT 260;"
     

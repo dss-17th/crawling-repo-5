@@ -27,7 +27,7 @@
             <header class="masthead bg-primary text-white text-center">
                 <div class="container d-flex align-items-center flex-column">
                     <!-- Masthead Heading-->
-                    <h1 class="masthead-heading text-uppercase mb-0">TSLA      Tesla</h1> <!-- symbol, name 입력-->
+                    <h1 class="masthead-heading text-uppercase mb-0">{{symbol}}      {{name}}</h1> <!-- symbol, name 입력-->
                     <!-- Icon Divider-->
                     <div class="divider-custom divider-light">
                         <div class="divider-custom-line"></div>
@@ -35,8 +35,8 @@
                         <div class="divider-custom-line"></div>
                     </div>
                     <!-- Masthead Subheading-->
-                    <p class="masthead-subheading font-weight-light mb-0 text-left">SECTOR  'Consumer Discretionary'</p>
-                    <p class="masthead-subheading font-weight-light mb-0 text-left">INDUSTRY  'Automobile Manufacturers'</p>
+                    <p class="masthead-subheading font-weight-light mb-0 text-left">SECTOR  {{sector}}</p>
+                    <p class="masthead-subheading font-weight-light mb-0 text-left">INDUSTRY  {{industry}}</p>
                 </div>
             </header>
     <chart class>
@@ -150,7 +150,7 @@
         function changeWeek(){
             var term = 'week';
             console.log(term);
-            var url = "/data/<symbol>?term=" + term;
+            var url = "/data/{{symbol}}?term=" + term;
             $.getJSON(url, function(response){
                 console.log(response);
                 var datas = [];
@@ -169,7 +169,7 @@
         function changeMonth(){
             var term = 'month';
             console.log(term);
-            var url = "/data/<symbol>?term=" + term;
+            var url = "/data/{{symbol}}?term=" + term;
             $.getJSON(url, function(response){
                 console.log(response);
                 var datas = [];
@@ -188,7 +188,7 @@
         function changeMonth3(){
             var term = 'month3';
             console.log(term);
-            var url = "/data/<symbol>?term=" + term;
+            var url = "/data/{{symbol}}?term=" + term;
             $.getJSON(url, function(response){
                 console.log(response);
                 var datas = [];
@@ -207,7 +207,7 @@
         function changeYear(){
             var term = 'year';
             console.log(term);
-            var url = "/data/<symbol>?term=" + term;
+            var url = "/data/{{symbol}}?term=" + term;
             $.getJSON(url, function(response){
                 console.log(response);
                 var datas = [];
