@@ -129,3 +129,4 @@
 # .pyre/
 
 user.py
+.DS_Store
