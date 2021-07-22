@@ -125,18 +125,12 @@
                                 }]
                         }
             });
-        var myChartwo2 = new Chart(myCharttwo, {
+        var myCharttwo2 = new Chart(myCharttwo, {
                 type : 'bar',
                 data : {
                     datasets : [{
                         label : 'Market capitalization',
-                        data : [
-                            {x:"TSLA", y:18428511470},
-                            {x:"GM", y:2408113644},
-                            {x:"F", y:918078226}],
-                                }],
-                        }
-            });
+                        data : [{x:"-", y:0}]}]}});
         //     var barCharthree = new Chart(myChartthree, {
         //         type : 'bar',
         //         data : {
@@ -235,44 +229,45 @@
                 myChartone1.update();})};
 
         function changeSector(){
-            var term = 'sector';
-            console.log(term);
-            var url = "/data/{{symbol}}?term=" + term;
+            var value = 'Sector';
+            console.log(value);
+            var url = "/data/{{symbol}}?value=" + value;
             $.getJSON(url, function(response){
                 console.log(response);
                 var datas = [];
-                for (var i = 0; i < response.data2.length; i++) {
-                    datas.push({x: response.data2[i].Date,
-                                y: response.data2[i].Close})}
+                for (var i = 0; i < response.data3.length; i++) {
+                    datas.push({x: response.data3[i].Symbol,
+                                y: response.data3[i].market_capitalization})}
                 console.log(datas);
                 const updatdate = {
-                datasets : [{
-                label : 'Close',
-                data : datas}]};
-                myChartone2.config.data = updatdate;
+                    datasets : [{
+                        label : 'Market capitalization',
+                        data : datas}]};
+                myCharttwo2.config.data = updatdate;
                 
-                myChartone2.update();})};        
+                myCharttwo2.update();})};        
             
         function changeIndustry(){
-            var term = 'industry';
-            console.log(term);
-            var url = "/data/{{symbol}}?term=" + term;
+            var value = 'Industry';
+            console.log(value);
+            var url = "/data/{{symbol}}?value=" + value;
             $.getJSON(url, function(response){
                 console.log(response);
                 var datas = [];
-                for (var i = 0; i < response.data2.length; i++) {
-                    datas.push({x: response.data2[i].Date,
-                                y: response.data2[i].Close})}
+                for (var i = 0; i < response.data3.length; i++) {
+                    datas.push({x: response.data3[i].Symbol,
+                                y: response.data3[i].market_capitalization})}
                 console.log(datas);
                 const updatdate = {
-                datasets : [{
-                label : 'Close',
-                data : datas}]};
-                myChartone2.config.data = updatdate;
+                    datasets : [{
+                        label : 'Market capitalization',
+                        data : datas}]};
+                myCharttwo2.config.data = updatdate;
                 
-                myChartone2.update();})}; 
+                myCharttwo2.update();})};
 
         $("#week").click();
+        $("#sector").click();
         </script>
     </chart>
     <news class>
