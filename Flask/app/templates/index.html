@@ -121,16 +121,37 @@
                 data : {
                      datasets : [{
                         label : 'Close',
-                        data : [{x:"-", y:0}]
+                        data : [{x:"-", y:0}],
+                        borderWidth: 20,
+                        radius: 10
                                 }]
-                        }
-            });
+                        },
+                        // options: {
+                        //         animation,
+                        //         scales: {x: {type: 'linear'}}
+                        //     }
+                            });
         var myCharttwo2 = new Chart(myCharttwo, {
                 type : 'bar',
                 data : {
                     datasets : [{
                         label : 'Market capitalization',
-                        data : [{x:"-", y:0}]}]}});
+                        data : [{y:0, x:"-"}]
+                                }]
+                        },
+                        options: {
+                                indexAxis: 'x',
+                                elements: {
+                                    bar: {
+                                        borderWidth: 1,
+                                    }},
+                                responsive: true,
+                                plugins: {
+                                legend: {
+                                    position: 'top',
+                                }}
+                            }
+                    });
         //     var barCharthree = new Chart(myChartthree, {
         //         type : 'bar',
         //         data : {
