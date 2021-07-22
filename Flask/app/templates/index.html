@@ -65,6 +65,12 @@
                         <button type="button" class="btn btn-outline-primary" id="year">Year</button>
                     </div>
                 </div>
+                <div class="col-lg-3">
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button type="button" class="btn btn-outline-primary" id="sector">Sector</button>
+                        <button type="button" class="btn btn-outline-primary" id="industry">Industry</button>
+                    </div>
+                </div>
             </div>
             <!--select button 생성 -->
             <!-- <select name="chartType" id="myChartone" onchange="updateChartType()">
@@ -100,6 +106,12 @@
         Month3.addEventListener('click', changeMonth3);
         Year.addEventListener('click', changeYear);
 
+        var Sector = document.getElementById('sector');
+        var Industry = document.getElementById('industry');
+
+        Sector.addEventListener('click', changeSector);
+        Industry.addEventListener('click', changeIndustry);
+
         var myChartone = document.getElementById('myChartone').getContext('2d');
         var myCharttwo = document.getElementById('myCharttwo').getContext('2d');
             // var myChartthree = document.getElementById('myChartthree').getContext('2d');
@@ -113,7 +125,7 @@
                                 }]
                         }
             });
-            var myChartwo2 = new Chart(myCharttwo, {
+        var myChartwo2 = new Chart(myCharttwo, {
                 type : 'bar',
                 data : {
                     datasets : [{
@@ -122,9 +134,8 @@
                             {x:"TSLA", y:18428511470},
                             {x:"GM", y:2408113644},
                             {x:"F", y:918078226}],
-                            
-                    }],
-                }
+                                }],
+                        }
             });
         //     var barCharthree = new Chart(myChartthree, {
         //         type : 'bar',
@@ -223,7 +234,43 @@
                 
                 myChartone1.update();})};
 
+        function changeSector(){
+            var term = 'sector';
+            console.log(term);
+            var url = "/data/{{symbol}}?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
+                const updatdate = {
+                datasets : [{
+                label : 'Close',
+                data : datas}]};
+                myChartone2.config.data = updatdate;
+                
+                myChartone2.update();})};        
             
+        function changeIndustry(){
+            var term = 'industry';
+            console.log(term);
+            var url = "/data/{{symbol}}?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
+                const updatdate = {
+                datasets : [{
+                label : 'Close',
+                data : datas}]};
+                myChartone2.config.data = updatdate;
+                
+                myChartone2.update();})}; 
 
         $("#week").click();
         </script>
