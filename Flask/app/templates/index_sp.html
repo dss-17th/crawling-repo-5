@@ -49,12 +49,23 @@
                         <form action="">
                         <div class='input-group'>
                             <input type="text" class='form-control search-input' placeholder='검색하세요'>
-                            <button type='button' class='btn btn-light search-button'>
+                            <button type='button' class='btn btn-light search-button' onclick="button1_click();">
                                 <i class='fas fa-search text-danger'></i>
                             </button>
                         </div>
                         </form>
                     </div>
+                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    <script>
+                        function button1_click() {
+                	    console.log("버튼1을 누르셨습니다.");
+                        var text = $('.search-input').val();
+                        console.log(text);
+                        url = "../" + text;
+                        window.location.href = url;}
+                    </script>
+
+
                     <!--우측상단 아이콘-->
                     <div class='col-lg-2'>
                         <ul class='navbar-nav'>
@@ -178,11 +189,11 @@
                         <div class='col-xl-3 col-sm-6 p-2'>
                             <div class='card card-common'>
                             <div class='card-body'>
-                                <div class='d-flex justify-content-between'>
+                                <div class='d-flex justify-content-between' OnClick='location.href ="../" + {{table1[0].Symbol | tojson}}' style="cursor:pointer;">
                                     <i class="fas fa-chart-line fa-3x" style="color:#007bff"></i>
                                 <div class="text-right text-secondary">
                                     <h6>어제</h6>
-                                    <h3>Etsy</h3>
+                                    <h3>{{ table1[0].Name | tojson }}</h3>
                                 </div>
                                 </div>
                             </div>
@@ -193,13 +204,13 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td >ViacomCBS</td>
+                                            <td OnClick='location.href ="../" + {{table1[1].Symbol | tojson}}' style="cursor:pointer;">{{ table1[1].Name | tojson }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Tesla</td>
+                                            <td OnClick='location.href ="../" + {{table1[2].Symbol | tojson}}' style="cursor:pointer;">{{ table1[2].Name | tojson }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Nvidia</td>
+                                            <td OnClick='location.href ="../" + {{table1[3].Symbol | tojson}}' style="cursor:pointer;">{{ table1[3].Name | tojson }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -209,11 +220,11 @@
                         <div class='col-xl-3 col-sm-6 p-2'>
                             <div class='card card-common'>
                             <div class='card-body'>
-                                <div class='d-flex justify-content-between'>
+                                <div class='d-flex justify-content-between' OnClick='location.href ="../" + {{table2[0].Symbol | tojson}}' style="cursor:pointer;">
                                 <i class="fas fa-chart-line fa-3x" style="color:#007bff"></i>
                                 <div class="text-right text-secondary">
                                     <h6>1달 전에</h6>
-                                    <h3>Biogen</h3>
+                                    <h3>{{ table2[0].Name | tojson }}</h3>
                                 </div>
                                 </div>
                             </div>
@@ -224,13 +235,13 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Nvidia</td>
+                                            <td OnClick='location.href ="../" + {{table2[1].Symbol | tojson}}' style="cursor:pointer;">{{ table2[1].Name | tojson }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Enphase Energy</td>
+                                            <td OnClick='location.href ="../" + {{table2[2].Symbol | tojson}}' style="cursor:pointer;">{{ table2[2].Name | tojson }}</td>
                                         </tr>
                                         <tr>
-                                            <td>NRG Energy</td>
+                                            <td OnClick='location.href ="../" + {{table2[3].Symbol | tojson}}' style="cursor:pointer;">{{ table2[3].Name | tojson }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -240,11 +251,11 @@
                         <div class='col-xl-3 col-sm-6 p-2'>
                             <div class='card card-common'>
                             <div class='card-body'>
-                                <div class='d-flex justify-content-between'>
+                                <div class='d-flex justify-content-between' OnClick='location.href ="../" + {{table3[0].Symbol | tojson}}' style="cursor:pointer;">
                                     <i class="fas fa-chart-line fa-3x" style="color:#007bff"></i>
                                 <div class="text-right text-secondary">
                                     <h6>3달 전에</h6>
-                                    <h3>Nvidia</h3>
+                                    <h3>{{ table3[0].Name | tojson }}</h3>
                                 </div>
                                 </div>
                             </div>
@@ -255,13 +266,13 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Biogen</td>
+                                            <td OnClick='location.href ="../" + {{table3[1].Symbol | tojson}}' style="cursor:pointer;">{{ table3[1].Name | tojson }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Enphase Energy</td>
+                                            <td OnClick='location.href ="../" + {{table3[2].Symbol | tojson}}' style="cursor:pointer;">{{ table3[2].Name | tojson }}</td>
                                         </tr>
                                         <tr>
-                                            <td>DXC Technology</td>
+                                            <td OnClick='location.href ="../" + {{table3[3].Symbol | tojson}}' style="cursor:pointer;">{{ table3[3].Name | tojson }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -271,11 +282,11 @@
                         <div class='col-xl-3 col-sm-6 p-2'>
                             <div class='card card-common'>
                             <div class='card-body'>
-                                <div class='d-flex justify-content-between'>
+                                <div class='d-flex justify-content-between' OnClick='location.href ="../" + {{table4[0].Symbol | tojson}}' style="cursor:pointer;">
                                     <i class="fas fa-chart-line fa-3x" style="color:#007bff"></i>
                                 <div class="text-right text-secondary">
                                     <h6>1년 전에</h6>
-                                    <h3>ViacomCBS</h3>
+                                    <h3>{{ table4[0].Name | tojson }}</h3>
                                 </div>
                                 </div>
                             </div>
@@ -286,13 +297,13 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Enphase Energy</td>
+                                            <td OnClick='location.href ="../" + {{table4[1].Symbol | tojson}}' style="cursor:pointer;">{{ table4[1].Name | tojson }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Gap</td>
+                                            <td OnClick='location.href ="../" + {{table4[2].Symbol | tojson}}' style="cursor:pointer;">{{ table4[2].Name | tojson }}</td>
                                         </tr>
                                         <tr>
-                                            <td>L Brands</td>
+                                            <td OnClick='location.href ="../" + {{table4[3].Symbol | tojson}}' style="cursor:pointer;">{{ table4[3].Name | tojson }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
