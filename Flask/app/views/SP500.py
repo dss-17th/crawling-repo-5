@@ -29,12 +29,12 @@ def sp():
     volumes = [data['sector_volume'] for data in data2]
 
 ## 3. 섹터별 시가총액 차트 testesetasldkfjaslkfjalskdjflakjsdlfj
-    sql3 = "SELECT Sector, SUM(market capitalization) as market_capital \
+    sql3 = "SELECT Sector, SUM(market_capitalization) as market_capital \
     FROM US_Stock.company, US_Stock.daily \
     WHERE US_Stock.company.Symbol = US_Stock.daily.Symbol \
     and DATE(Date)= '2021-06-10' and US_Stock.company.Sector != 'None'\
     GROUP BY Sector \
-    ORDER BY sum(market capitalization) DESC;"
+    ORDER BY sum(market_capitalization) DESC;"
 
     data3 = db_class.executeAll(sql3)
     
