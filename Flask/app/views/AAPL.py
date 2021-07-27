@@ -15,4 +15,6 @@ def page(symbol):
     name = datafile[datafile['Symbol'] == symbol]['Name'].values[0]
     sector = datafile[datafile['Symbol'] == symbol]['Sector'].values[0]
     industry = datafile[datafile['Symbol'] == symbol]['Industry'].values[0]
-    return render_template("index.html",data1=data1, symbol=symbol, name=name, sector=sector, industry=industry)
+    lat = datafile[datafile['Symbol'] == symbol]['lat'].values[0]
+    lng = datafile[datafile['Symbol'] == symbol]['lng'].values[0]
+    return render_template("index.html",data1=data1, symbol=symbol, name=name, sector=sector, industry=industry, lat=lat, lng=lng)
