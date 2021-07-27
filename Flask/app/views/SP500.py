@@ -28,11 +28,11 @@ def sp():
     sect = [data['Sector'] for data in data2]
     volumes = [float(data['sector_volume']) for data in data2]
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 ## 3. 섹터별 시가총액 차트 testesetasldkfjaslkfjalskdjflakjsdlfj
-=======
+#=======
 ## 3. 섹터별 시가총액 차트 
->>>>>>> da4a38f8623d59a700b84688e1fa4ad68ade24e0
+#>>>>>>> da4a38f8623d59a700b84688e1fa4ad68ade24e0
     sql3 = "SELECT Sector, SUM(market_capitalization) as market_capital \
     FROM US_Stock.company, US_Stock.daily \
     WHERE US_Stock.company.Symbol = US_Stock.daily.Symbol \
