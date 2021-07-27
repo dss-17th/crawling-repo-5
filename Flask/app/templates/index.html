@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>TOS Stock</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.0/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60fa2906d6dad394"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-dark text-uppercase" id="mainNav">
@@ -24,79 +27,54 @@
             </div>
         </div>
     </nav>
-            <!-- Masthead-->
-            <header class="masthead bg-primary text-white text-center">
-                <div class="container d-flex align-items-center flex-column">
-                    <!-- Masthead Heading-->
-                    <h1 class="masthead-heading text-uppercase mb-0">{{symbol}}      {{name}}</h1> <!-- symbol, name 입력-->
-                    <!-- Icon Divider-->
-                    <div class="divider-custom divider-light">
-                        <div class="divider-custom-line"></div>
-                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                        <div class="divider-custom-line"></div>
-                    </div>
-                    <!-- Masthead Subheading-->
-                    <p class="masthead-subheading font-weight-light mb-0 text-left">SECTOR  {{sector}}</p>
-                    <p class="masthead-subheading font-weight-light mb-0 text-left">INDUSTRY  {{industry}}</p>
-                </div>
-            </header>
-    <chart class>
-            <div class="container">
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1 class="masthead-heading text-uppercase mb-0">{{symbol}}      {{name}}</h1>
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <p class="masthead-subheading font-weight-light mb-0 text-left">SECTOR  {{sector}}</p>
+        <p class="masthead-subheading font-weight-light mb-0 text-left">INDUSTRY  {{industry}}</p>
+    </div>
+</header>
+<chart class>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <canvas id="myChartone" width="=600" height='150'></canvas>
+            </div>
+            <div class="col-lg-5">
+                <canvas id="myCharttwo" width="=600" height='215'></canvas>
+            </div>
                 <div class="row">
-                    <div class="col-lg-7">
-                        <canvas id="myChartone" width="=600" height='150'></canvas>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 text-center">
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <button type="button" class="btn btn-outline-primary" id="week">Week</button>
+                                <button type="button" class="btn btn-outline-primary" id="month">Month</button>
+                                <button type="button" class="btn btn-outline-primary" id="month3">3 Month</button>
+                                <button type="button" class="btn btn-outline-primary" id="year">Year</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <button type="button" class="btn btn-outline-primary" id="sector">Sector</button>
+                                <button type="button" class="btn btn-outline-primary" id="industry">Industry</button>
+                            </div>
+                        </div>
                     </div>
-                    <!-- <div class="col-sm-7">
-                        <canvas id="button" width="=50" height='10'></canvas>
-                    </div> -->
-                    <div class="col-lg-5">
-                        <canvas id="myCharttwo" width="=600" height='215'></canvas>
-                    <!-- </div>
-                    <div class="col-lg-4">
-                        <canvas id="myChartthree" width="=600" height='400'></canvas>
-                    </div> -->
                 </div>
+            <!-- <div class="col-lg-4">
+                <canvas id="myChartthree" width="=600" height='400'></canvas>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-9">
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" class="btn btn-outline-primary" id="week">Week</button>
-                        <button type="button" class="btn btn-outline-primary" id="month">Month</button>
-                        <button type="button" class="btn btn-outline-primary" id="month3">3 Month</button>
-                        <button type="button" class="btn btn-outline-primary" id="year">Year</button>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" class="btn btn-outline-primary" id="sector">Sector</button>
-                        <button type="button" class="btn btn-outline-primary" id="industry">Industry</button>
-                    </div>
-                </div>
-            </div>
-            <!--select button 생성 -->
-            <!-- <select name="chartType" id="myChartone" onchange="updateChartType()">
-                <div class='row'>
-                    <div class="col-md-3">
-                        <option value="bar">Bar</option>
-                        <option value="line">Line</option>
-                        <option value="pie">Pie</option>
-                        <option value="radar">Radar</option>
-                        <option value="polarArea">Polar Area</option>
-                    </div>
-                </div>
-            </select>  -->
-            <div class="chart-container" style="position: relative;">
-                <canvas id="myChartone"></canvas>
-            </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
-
-
-
-
-        <script>
+            <div class="col-lg-8">
+                <canvas id="myChartfour" width="=600" height='190'></canvas>
+            </div> -->
+        </div>
+    </div>
+    <script>
         var Week = document.getElementById('week');
         var Month = document.getElementById('month');
         var Month3 = document.getElementById('month3');
@@ -115,7 +93,8 @@
 
         var myChartone = document.getElementById('myChartone').getContext('2d');
         var myCharttwo = document.getElementById('myCharttwo').getContext('2d');
-            // var myChartthree = document.getElementById('myChartthree').getContext('2d');
+        // var myChartthree = document.getElementById('myChartthree').getContext('2d');
+        // var myChartfour = document.getElementById('myChartfour').getContext('2d');
 
         var myChartone1 = new Chart(myChartone, {
                 type : 'line',
@@ -152,8 +131,8 @@
                                     position: 'top',
                                 }}
                             }
-                    });
-        //     var barCharthree = new Chart(myChartthree, {
+                    });     
+        // var myChartthree = new Chart(myChartthree, {
         //         type : 'bar',
         //         data : {
         //             labels : ['a', 'b', 'c', 'd',' e'],
@@ -173,7 +152,26 @@
         //             }
         //         }
         // });
-
+        // var myChartfour = new Chart(myChartfour, {
+        //         type : 'bar',
+        //         data : {
+        //             labels : ['a', 'b', 'c', 'd',' e'],
+        //             datasets : [{
+        //                 label : 'ChartJS',
+        //                 data : [1000,300,200,1000,10000]
+        //             }]
+        //         },
+        //         options: {
+        //             responsive:true,
+        //             scales: {
+        //                 yAxes : [{
+        //                     ticks: {
+        //                         beginAtzero : true
+        //                     }
+        //                 }]
+        //             }
+        //         }
+        // });
         function changeWeek(){
             var term = 'week';
             console.log(term);
@@ -291,90 +289,171 @@
         $("#week").click();
         $("#sector").click();
         </script>
-    </chart>
-    <news class>
-        <div class="row">
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">NEWS</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-12">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            </div>
-                            <!-- <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." /> -->
+</chart>
+<news class>
+    <div class="row">
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary m-5">NEWS</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4 mb-12">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped">
-                    <colgroup>
-                        <col align="center" width="300px"/>
-                        <col width="1200px"/>
-                        <col width="900px"/>
-                        <col width="300px"/>
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th scope="col" style="text-align: center;">No.</th>
-                        <th scope="col" style="text-align: center;">Title</th>
-                        <th scope="col" style="text-align: center;">Sub title</th>
-                        <th scope="col" style="text-align: center;">Link</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row" style="text-align: center;">1</th>
-                        <td>{{data1[::-1][0].title}}</td>
-                        <td>{{data1[::-1][0].subtitle}}</td>
-                        <!-- <td href="https://www.investing.com/">{{data1[::-1][0].link}}</td> -->
-                        <td align="center" onClick="location.href='{{data1[::-1][0].link}}'" style="cursor:pointer;">LINK</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" style="text-align: center;">2</th>
-                        <td>{{data1[::-1][1].title}}</td>
-                        <td>{{data1[::-1][1].subtitle}}</td>
-                        <!-- <td href="https://www.investing.com/">{{data1[::-1][1].link}}</td> -->
-                        <td align="center" onClick="location.href='{{data1[::-1][1].link}}'" style="cursor:pointer;">LINK</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" style="text-align: center;">3</th>
-                        <td>{{data1[::-1][2].title}}</td>
-                        <td>{{data1[::-1][2].subtitle}}</td>
-                        <!-- <td href="https://www.investing.com/">{{data1[::-1][2].link}}</td> -->
-                        <td align="center" onClick="location.href='{{data1[::-1][2].link}}'" style="cursor:pointer;">LINK</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" style="text-align: center;">4</th>
-                        <td>{{data1[::-1][3].title}}</td>
-                        <td>{{data1[::-1][3].subtitle}}</td>
-                        <!-- <td href={{data1[::-1][4].link}}>{{data1[::-1][3].link}}</td> -->
-                        <td align="center" onClick="location.href='{{data1[::-1][3].link}}'" style="cursor:pointer;">LINK</td>
-                    </tr>
-                    <tr>
-                        <th scope="row" style="text-align: center;">5</th>
-                        <td>{{data1[::-1][4].title}}</td>
-                        <td>{{data1[::-1][4].subtitle}}</td>
-                        <td align="center" onClick="location.href='{{data1[::-1][4].link}}'" style="cursor:pointer;">LINK</td> 
-                    </tr>
-                    </tbody>
-                </table>
-                </div>
-            </color>
-        </section>
+            </div>
+            <table class="table table-striped">
+                <colgroup>
+                    <col align="center" width="300px"/>
+                    <col width="1200px"/>
+                    <col width="900px"/>
+                    <col width="300px"/>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col" style="text-align: center;">No.</th>
+                    <th scope="col" style="text-align: center;">Title</th>
+                    <th scope="col" style="text-align: center;">Sub title</th>
+                    <th scope="col" style="text-align: center;">Link</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row" style="text-align: center;">1</th>
+                    <td>{{data1[::-1][0].title}}</td>
+                    <td>{{data1[::-1][0].subtitle}}</td>
+                    <td href="https://www.investing.com/">{{data1[::-1][0].link}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][0].link}}'" style="cursor:pointer;">LINK</td>
+                </tr>
+                <tr>
+                    <th scope="row" style="text-align: center;">2</th>
+                    <td>{{data1[::-1][1].title}}</td>
+                    <td>{{data1[::-1][1].subtitle}}</td>
+                    <td href="https://www.investing.com/">{{data1[::-1][1].link}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][1].link}}'" style="cursor:pointer;">LINK</td>
+                </tr>
+                <tr>
+                    <th scope="row" style="text-align: center;">3</th>
+                    <td>{{data1[::-1][2].title}}</td>
+                    <td>{{data1[::-1][2].subtitle}}</td>
+                    <td href="https://www.investing.com/">{{data1[::-1][2].link}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][2].link}}'" style="cursor:pointer;">LINK</td>
+                </tr>
+                <tr>
+                    <th scope="row" style="text-align: center;">4</th>
+                    <td>{{data1[::-1][3].title}}</td>
+                    <td>{{data1[::-1][3].subtitle}}</td>
+                    <td href={{data1[::-1][3].link}}>{{data1[::-1][3].link}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][3].link}}'" style="cursor:pointer;">LINK</td>
+                </tr>
+                <tr>
+                    <th scope="row" style="text-align: center;">5</th>
+                    <td>{{data1[::-1][4].title}}</td>
+                    <td>{{data1[::-1][4].subtitle}}</td>
+                    <td href={{data1[::-1][4].link}}>{{data1[::-1][4].link}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][4].link}}'" style="cursor:pointer;">LINK</td> 
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </color>
+    </section>
+    </div>
+</news>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <canvas id="myChart_1" width="200", height="165"></canvas>
         </div>
-    </news>
-<!-- About Section-->
-<section class="page-section bg-primary text-white mb-0" id="about">
+        <div class="col-lg-8">
+            <canvas id="myChart_2" width="600", height="225"></canvas>
+        </div>
+    </div>
+</div>
+    <script> 
+    var ctx = document.getElementById('myChart_1'); 
+    var myChart = new Chart(ctx, 
+    { type: 'bar',
+        data: {
+         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [
+                {label: 'Profit', 
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1 
+                }
+                ]
+             },
+            options: { scales: 
+                        { yAxes: [{
+                             ticks: {
+                                  beginAtZero: true 
+                                } 
+                            }] 
+                        } 
+                    } 
+                });
+    var ctx = document.getElementById('myChart_2'); 
+    var myChart = new Chart(ctx, 
+    { type: 'bar',
+        data: {
+         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [
+                {label: 'Profit', 
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1 
+                }
+                ]
+             },
+            options: { scales: 
+                        { yAxes: [{
+                             ticks: {
+                                  beginAtZero: true 
+                                } 
+                            }] 
+                        } 
+                    } 
+                });
+    </script>
+
+<div class="container">
+  <head>
+    <style>
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+    <h3 class="page-section-heading text-center text-uppercase text-secondary m-2">Head Office</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_k3Xyf1wcrkVXgvF7pFkKxERw4vNc15Q&callback=initMap">
+    </script>
+  </body>
+</div>
+
+<section class="page-section bg-primary text-white m-3" id="about">
     <div class="container">
         <!-- About Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
@@ -391,19 +470,19 @@
         <div class="row">
             <div class="col-lg-12 ms-auto text-center"><p class="lead">
                 S&P500에 대한 정보입니다.</p></div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12 ms-auto text-center"><p class="lead">
                         Beta version </p></div>
-            <!-- <div class="col-lg-4 me-auto text-center"><p class="lead">S&P500에 대한 정보입니다.</p></div> -->
+            <div class="col-lg-4 me-auto text-center"><p class="lead">S&P500에 대한 정보입니다.</p></div>
         </div>
-        <!-- About Section Button-->
-        <!-- <div class="text-center mt-4">
+        About Section Button-->
+        <div class="text-center mt-4">
             <a class="btn btn-xl btn-outline-light" href="https://www.investing.com/">
                 <i class="fas fa-download me-1"></i>
                 Free Download!
 
             </a>
-        </div> -->
+        </div>
     </div>
 </section> 
 <div class="copyright py-4 bg-dark text-center text-white-50">
