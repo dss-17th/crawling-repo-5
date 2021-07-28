@@ -367,15 +367,36 @@
         </div>
     </div>
 </div>
-    <script> 
-    var ctx = document.getElementById('myChart_1'); 
-    var myChart = new Chart(ctx, 
+<script> 
+
+    var profitchart = document.getElementById('profitchart');
+    var saleschart = document.getElementById('saleschart'); 
+
+    var profitchart1 = new Chart(profitchart, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label : '',
+                data: [{x:"-", y:0}],
+                borderWidth: 1 
+                }]
+             },
+            options: { scales: 
+                        { yAxes: [{
+                             ticks: {
+                                  beginAtZero: true 
+                                } 
+                            }] 
+                        } 
+                    } 
+                });
+    
+    var saleschart1 = new Chart(saleschart, 
     { type: 'bar',
         data: {
-         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [
-                {label: 'Profit', 
-                data: [12, 19, 3, 5, 2, 3],
+                {label: 'Sales', 
+                data: [{x:"-", y:0}],
                 borderWidth: 1 
                 }
                 ]
@@ -389,28 +410,58 @@
                         } 
                     } 
                 });
-    var ctx = document.getElementById('myChart_2'); 
-    var myChart = new Chart(ctx, 
-    { type: 'bar',
-        data: {
-         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [
-                {label: 'Profit', 
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1 
-                }
-                ]
-             },
-            options: { scales: 
-                        { yAxes: [{
-                             ticks: {
-                                  beginAtZero: true 
-                                } 
-                            }] 
-                        } 
-                    } 
-                });
+
+    function changeprofit(){
+        var profit = 'profit'
+        console.log(profit);
+        var url = "/data/{{symbol}}?profit=" + profit;
+        $.getJSON(url, function(response){
+            var datas1 = [];
+            for (var i = 0; i < response.datas_1.length; i++) {
+                datas1.push({x: response.datas_1[i].update_date,
+                            y: response.datas_1[i].profit})
+                        }
+            console.log(datas1);
+            const updatdate = {
+            datasets : [{
+            label : 'Profit',
+            data : datas1}]};
+            profitchart1.config.data = updatdate;
+                
+            profitchart1.update();})};
+
+    function changesales(){
+        var sales = 'sales'
+        console.log(sales);
+        var url = "/data/{{symbol}}?sales=" + sales;
+        $.getJSON(url, function(response){
+            var datas2 = [];
+            for (var i = 0; i < response.datas_2.length; i++) {
+                datas2.push({x: response.datas_2[i].update_date,
+                            y: response.datas_2[i].real_profit})
+                        }
+            console.log(datas2);
+            const updatdate = {
+            datasets : [{
+            label : 'Sales',
+            data : datas2}]};
+            saleschart1.config.data = updatdate;
+                
+            saleschart1.update();})};
+
+
+
+
+
+
+
+
+    changeprofit()
+    changesales()
+
     </script>
+
+
 
 <div class="container">
   <head>
@@ -450,6 +501,10 @@ function initMap() {
     </script>
   </body>
 </div>
+
+
+
+
 
 <section class="page-section bg-primary text-white m-3" id="about">
     <div class="container">
