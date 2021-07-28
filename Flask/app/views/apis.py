@@ -67,4 +67,28 @@ def data(symbol):
     except : 
         pass    
     
+    try : 
+        value_1 = request.values.get('value_1')
+        sql_1 = f"SELECT Company_low.update_date, profit\
+                FROM US_Stock.Company_low \
+                WHERE Company_low.Symbol ='{symbol}'\
+                ORDER BY Company_low.update_date ASC;"
+        datas_1 = db_class.executeAll(sql_1)
+        result['datas_1'] = datas_1
+    except : 
+        pass
+
+    try : 
+        value_2 = request.values.get('value_2')
+        sql_2 = f"SELECT Company_low.update_date, real_profit\
+	            FROM US_Stock.Company_low\
+                WHERE Company_low.Symbol = '{symbol}'\
+                ORDER BY Company_low.update_date ASC;"
+        datas_2 = db_class.executeAll(sql_2)
+        result['datas_2'] = datas_2
+    except : 
+        pass
+
+
+
     return jsonify(result)
