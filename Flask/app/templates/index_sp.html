@@ -94,17 +94,45 @@
                             <!--mychart 선언-->
                             <div class="container"> 
                                 <div class='row'>
-                                    <div class='col-6'>
+                                    <div class='col-lg-6'>
                                         <canvas id="myChartone" width="400" height="350"></canvas> 
                                     </div>
-                                    <div class='col-6'>
+                                    <div class='col-lg-6'>
                                         <canvas id="myCharttwo" width="400" height="380"></canvas> 
+                                    </div>
+                                    <div class="row">
+                                        <div class="row justify-content-center m-4">
+                                            <div class="col-md-6 text-center">
+                                                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                    <button type="button" class="btn btn-outline-primary" id="week">Week</button>
+                                                    <button type="button" class="btn btn-outline-primary" id="month">Month</button>
+                                                    <button type="button" class="btn btn-outline-primary" id="month3">3 Month</button>
+                                                    <button type="button" class="btn btn-outline-primary" id="year">Year</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 text-center">
+                                                <!-- <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                    <button type="button" class="btn btn-outline-primary" id="sector">Sector</button>
+                                                    <button type="button" class="btn btn-outline-primary" id="industry">Industry</button>
+                                                </div> -->
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         
                             <!-- 라인 차트 --> 
                             <script>
+                                var Week = document.getElementById('week');
+                                var Month = document.getElementById('month');
+                                var Month3 = document.getElementById('month3');
+                                var Year = document.getElementById('year');
+
+                                Week.addEventListener('click', changeWeek);
+                                Month.addEventListener('click', changeMonth);
+                                Month3.addEventListener('click', changeMonth3);
+                                Year.addEventListener('click', changeYear);
+
                                 /*차트타입 변수 받기*/
                                 var ctxone = document.getElementById('myChartone').getContext('2d');
                                 var ctxtwo = document.getElementById('myCharttwo').getContext('2d'); 
@@ -166,11 +194,49 @@
                                         plugins: {
                                         legend: {
                                             position: 'top',
-                                        },
-                                        }
-                                    },
-                                    });
+                                        }}}});
+                            
+                            
+                                        function changeWeek(){
+                                            const updatdate = {
+                                            labels : {{ x_data[-6:] | tojson }},
+                                            datasets : [{
+                                                    label : 'Close',
+                                                    data :{{ y_data[-6:] | tojson }}
+                                                }]};
+                                            Chartone.config.data = updatdate;
+                                            Chartone.update()};
 
+                                        function changeMonth(){
+                                            const updatdate = {
+                                            labels : {{ x_data[-22:] | tojson }},
+                                            datasets : [{
+                                                    label : 'Close',
+                                                    data :{{ y_data[-22:] | tojson }}
+                                                }]};
+                                            Chartone.config.data = updatdate;
+                                            Chartone.update()};
+
+                                        function changeMonth3(){
+                                            const updatdate = {
+                                            labels : {{ x_data[-64:] | tojson }},
+                                            datasets : [{
+                                                    label : 'Close',
+                                                    data :{{ y_data[-64:] | tojson }}
+                                                }]};
+                                            Chartone.config.data = updatdate;
+                                            Chartone.update()};
+
+                                        function changeYear(){
+                                            const updatdate = {
+                                            labels : {{ x_data[-260:] | tojson }},
+                                            datasets : [{
+                                                    label : 'Close',
+                                                    data :{{ y_data[-260:] | tojson }}
+                                                }]};
+                                            Chartone.config.data = updatdate;
+                                            Chartone.update()};
+                            
                             </script> 
 
 
