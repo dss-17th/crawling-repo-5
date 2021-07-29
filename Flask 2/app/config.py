@@ -1,0 +1,6 @@
+class Config(object):
+    TEMPLATES_AUTO_RELOAD = True
+    MONGOALCHEMY_DATABASE = 'mongo'
+    MONGOALCHEMY_CONNECTION_STRING = 'mongodb://dss:dss@13.209.195.153:27017'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:dss@13.209.195.153/dss'
