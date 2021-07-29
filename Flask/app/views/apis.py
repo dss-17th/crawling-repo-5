@@ -28,7 +28,7 @@ def data(symbol):
             order by DATE DESC\
             LIMIT 64;"
         elif term == 'year':
-            sql = f"SELECT date_format(daily.Date, '%%y-%%m-%%d') as Date, Close \
+            sql = f"SELECT date_format(daily.Date, '%%Y-%%m-%%d') as Date, Close \
             FROM US_Stock.daily \
             WHERE Symbol = '{symbol}'\
             order by DATE DESC\
