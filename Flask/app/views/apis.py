@@ -10,44 +10,28 @@ def data(symbol):
     try : 
         term = request.values.get('term')
         if term == 'week':
-<<<<<<< HEAD
             sql = f"SELECT date_format(daily.Date, '%%Y-%%m-%%d') as Date, Close \
-=======
-            sql = f"SELECT Close, date_format(DATE, '%%Y-%%m-%%d') as Date \
->>>>>>> 79a756cde812de4e28b4457e59484b264830c085
             FROM US_Stock.daily \
-            WHERE Symbol = '{symbol}' \
-            order by DATE DESC \
+            WHERE Symbol = '{symbol}'\
+            order by DATE DESC\
             LIMIT 6;"
         elif term == 'month':
-<<<<<<< HEAD
             sql = f"SELECT date_format(daily.Date, '%%Y-%%m-%%d') as Date, Close \
-=======
-            sql = f"SELECT Close, date_format(DATE, '%%Y-%%m-%%d') as Date \
->>>>>>> 79a756cde812de4e28b4457e59484b264830c085
             FROM US_Stock.daily \
-            WHERE Symbol = '{symbol}' \
-            order by DATE DESC \
+            WHERE Symbol = '{symbol}'\
+            order by DATE DESC\
             LIMIT 22;"
         elif term == 'month3':
-<<<<<<< HEAD
             sql = f"SELECT date_format(daily.Date, '%%Y-%%m-%%d') as Date, Close \
-=======
-            sql = f"SELECT Close, date_format(DATE, '%%Y-%%m-%%d') as Date \
->>>>>>> 79a756cde812de4e28b4457e59484b264830c085
             FROM US_Stock.daily \
-            WHERE Symbol = '{symbol}' \
-            order by DATE DESC \
+            WHERE Symbol = '{symbol}'\
+            order by DATE DESC\
             LIMIT 64;"
         elif term == 'year':
-<<<<<<< HEAD
             sql = f"SELECT date_format(daily.Date, '%%y-%%m-%%d') as Date, Close \
-=======
-            sql = f"SELECT  Close, date_format(DATE, '%%Y-%%m-%%d') as Date \
->>>>>>> 79a756cde812de4e28b4457e59484b264830c085
             FROM US_Stock.daily \
-            WHERE Symbol = '{symbol}' \
-            order by DATE DESC \
+            WHERE Symbol = '{symbol}'\
+            order by DATE DESC\
             LIMIT 260;"
         data2 = db_class.executeAll(sql)[::-1]
         result['data2'] = data2
@@ -85,11 +69,7 @@ def data(symbol):
     
     try : 
         value_1 = request.values.get('value_1')
-<<<<<<< HEAD
         sql_1 = f"SELECT date_format(Company_low.update_date,'%%Y-%%m-%%d') as update_date, profit\
-=======
-        sql_1 = f"SELECT profit, date_format(Company_low.update_date, '%%Y-%%m') as update_date \
->>>>>>> 79a756cde812de4e28b4457e59484b264830c085
                 FROM US_Stock.Company_low \
                 WHERE Company_low.Symbol ='{symbol}'\
                 ORDER BY Company_low.update_date ASC;"
@@ -100,11 +80,7 @@ def data(symbol):
 
     try : 
         value_2 = request.values.get('value_2')
-<<<<<<< HEAD
         sql_2 = f"SELECT date_format(Company_low.update_date,'%%Y-%%m-%%d') as update_date, real_profit\
-=======
-        sql_2 = f"SELECT real_profit, date_format(Company_low.update_date, '%%Y-%%m') as update_date \
->>>>>>> 79a756cde812de4e28b4457e59484b264830c085
 	            FROM US_Stock.Company_low\
                 WHERE Company_low.Symbol = '{symbol}'\
                 ORDER BY Company_low.update_date ASC;"
