@@ -108,6 +108,7 @@
                                                     <button type="button" class="btn btn-outline-primary" id="month">Month</button>
                                                     <button type="button" class="btn btn-outline-primary" id="month3">3 Month</button>
                                                     <button type="button" class="btn btn-outline-primary" id="year">Year</button>
+                                                    <button type="button" class="btn btn-outline-primary" id="year5">5 Year</button>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 text-center">
@@ -127,11 +128,13 @@
                                 var Month = document.getElementById('month');
                                 var Month3 = document.getElementById('month3');
                                 var Year = document.getElementById('year');
+                                var Year5 = document.getElementById('year5');
 
                                 Week.addEventListener('click', changeWeek);
                                 Month.addEventListener('click', changeMonth);
                                 Month3.addEventListener('click', changeMonth3);
                                 Year.addEventListener('click', changeYear);
+                                Year5.addEventListener('click', changeYear5);
 
                                 /*차트타입 변수 받기*/
                                 var ctxone = document.getElementById('myChartone').getContext('2d');
@@ -219,6 +222,8 @@
                                             labels : {{ x_data[-6:] | tojson }},
                                             datasets : [{
                                                     label : 'Close',
+                                                    backgroundColor: 'rgba(54, 162, 235, 0.3)', 
+                                                    borderColor: 'rgb(54, 162, 235, 0.0)',
                                                     data :{{ y_data[-6:] | tojson }}
                                                 }]};
                                             Chartone.config.data = updatdate;
@@ -229,6 +234,8 @@
                                             labels : {{ x_data[-22:] | tojson }},
                                             datasets : [{
                                                     label : 'Close',
+                                                    backgroundColor: 'rgba(54, 162, 235, 0.3)', 
+                                                    borderColor: 'rgb(54, 162, 235, 0.0)',
                                                     data :{{ y_data[-22:] | tojson }}
                                                 }]};
                                             Chartone.config.data = updatdate;
@@ -239,6 +246,8 @@
                                             labels : {{ x_data[-64:] | tojson }},
                                             datasets : [{
                                                     label : 'Close',
+                                                    backgroundColor: 'rgba(54, 162, 235, 0.3)', 
+                                                    borderColor: 'rgb(54, 162, 235, 0.0)',
                                                     data :{{ y_data[-64:] | tojson }}
                                                 }]};
                                             Chartone.config.data = updatdate;
@@ -249,7 +258,21 @@
                                             labels : {{ x_data[-260:] | tojson }},
                                             datasets : [{
                                                     label : 'Close',
+                                                    backgroundColor: 'rgba(54, 162, 235, 0.3)', 
+                                                    borderColor: 'rgb(54, 162, 235, 0.0)',
                                                     data :{{ y_data[-260:] | tojson }}
+                                                }]};
+                                            Chartone.config.data = updatdate;
+                                            Chartone.update()};
+                                        
+                                        function changeYear5(){
+                                            const updatdate = {
+                                            labels : {{ x_data | tojson }},
+                                            datasets : [{
+                                                    label : 'Close',
+                                                    backgroundColor: 'rgba(54, 162, 235, 0.3)', 
+                                                    borderColor: 'rgb(54, 162, 235, 0.0)',
+                                                    data :{{ y_data | tojson }}
                                                 }]};
                                             Chartone.config.data = updatdate;
                                             Chartone.update()};
