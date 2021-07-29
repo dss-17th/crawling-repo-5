@@ -286,8 +286,8 @@
                 
                 myCharttwo2.update();})};
 
-        $("#week").click();
-        $("#sector").click();
+        changeWeek()
+        changeSector()
         </script>
 </chart>
 <news class>
@@ -322,32 +322,32 @@
                 <tbody>
                 <tr>
                     <th scope="row" style="text-align: center;">1</th>
-                    <td>{{data1[::-1][0].title}}</td>
-                    <td>{{data1[::-1][0].subtitle}}</td>
+                    <td>{{data1[::-1][0].title[:60]}}</td>
+                    <td>{{data1[::-1][0].subtitle[:60]}}</td>
                     <td align="center" onClick="location.href='{{data1[::-1][0].link}}'" style="cursor:pointer;">LINK</td>
                 </tr>
                 <tr>
                     <th scope="row" style="text-align: center;">2</th>
-                    <td>{{data1[::-1][1].title}}</td>
-                    <td>{{data1[::-1][1].subtitle}}</td>
+                    <td>{{data1[::-1][1].title[:60]}}</td>
+                    <td>{{data1[::-1][1].subtitle[:60]}}</td>
                     <td align="center" onClick="location.href='{{data1[::-1][1].link}}'" style="cursor:pointer;">LINK</td>
                 </tr>
                 <tr>
                     <th scope="row" style="text-align: center;">3</th>
-                    <td>{{data1[::-1][2].title}}</td>
-                    <td>{{data1[::-1][2].subtitle}}</td>
+                    <td>{{data1[::-1][2].title[:60]}}</td>
+                    <td>{{data1[::-1][2].subtitle[:60]}}</td>
                     <td align="center" onClick="location.href='{{data1[::-1][2].link}}'" style="cursor:pointer;">LINK</td>
                 </tr>
                 <tr>
                     <th scope="row" style="text-align: center;">4</th>
-                    <td>{{data1[::-1][3].title}}</td>
-                    <td>{{data1[::-1][3].subtitle}}</td>
+                    <td>{{data1[::-1][3].title[:60]}}</td>
+                    <td>{{data1[::-1][3].subtitle[:60]}}</td>
                     <td align="center" onClick="location.href='{{data1[::-1][3].link}}'" style="cursor:pointer;">LINK</td>
                 </tr>
                 <tr>
                     <th scope="row" style="text-align: center;">5</th>
-                    <td>{{data1[::-1][4].title}}</td>
-                    <td>{{data1[::-1][4].subtitle}}</td>
+                    <td>{{data1[::-1][4].title[:60]}}</td>
+                    <td>{{data1[::-1][4].subtitle[:60]}}</td>
                     <td align="center" onClick="location.href='{{data1[::-1][4].link}}'" style="cursor:pointer;">LINK</td> 
                 </tr>
                 </tbody>
@@ -359,23 +359,44 @@
 </news>
 <div class="container">
     <div class="row">
-        <div class="col-lg-4">
-            <canvas id="myChart_1" width="200", height="165"></canvas>
+        <div class="col-lg-5">
+            <canvas id="profitchart" width="200", height="165"></canvas>
         </div>
-        <div class="col-lg-8">
-            <canvas id="myChart_2" width="600", height="225"></canvas>
+        <div class="col-lg-7">
+            <canvas id="saleschart" width="600", height="325"></canvas>
         </div>
     </div>
 </div>
-    <script> 
-    var ctx = document.getElementById('myChart_1'); 
-    var myChart = new Chart(ctx, 
+<script> 
+
+    var profitchart = document.getElementById('profitchart');
+    var saleschart = document.getElementById('saleschart'); 
+
+    var profitchart1 = new Chart(profitchart, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label : '',
+                data: [{x:"-", y:0}],
+                borderWidth: 1 
+                }]
+             },
+            options: { scales: 
+                        { yAxes: [{
+                             ticks: {
+                                  beginAtZero: true 
+                                } 
+                            }] 
+                        } 
+                    } 
+                });
+    
+    var saleschart1 = new Chart(saleschart, 
     { type: 'bar',
         data: {
-         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [
-                {label: 'Profit', 
-                data: [12, 19, 3, 5, 2, 3],
+                {label: 'Sales', 
+                data: [{x:"-", y:0}],
                 borderWidth: 1 
                 }
                 ]
@@ -389,28 +410,53 @@
                         } 
                     } 
                 });
-    var ctx = document.getElementById('myChart_2'); 
-    var myChart = new Chart(ctx, 
-    { type: 'bar',
-        data: {
-         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [
-                {label: 'Profit', 
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1 
-                }
-                ]
-             },
-            options: { scales: 
-                        { yAxes: [{
-                             ticks: {
-                                  beginAtZero: true 
-                                } 
-                            }] 
-                        } 
-                    } 
-                });
+
+    function changeprofit(){
+        var profit = 'profit'
+        console.log(profit);
+        var url = "/data/{{symbol}}?profit=" + profit;
+        $.getJSON(url, function(response){
+            var datas1 = [];
+            for (var i = 0; i < response.datas_1.length; i++) {
+                datas1.push({x: response.datas_1[i].update_date,
+                            y: response.datas_1[i].profit})
+                        }
+            console.log(datas1);
+            const updatdate = {
+            datasets : [{
+            label : 'Profit',
+            data : datas1}]};
+            profitchart1.config.data = updatdate;
+                
+            profitchart1.update();})};
+
+    function changesales(){
+        var sales = 'sales'
+        console.log(sales);
+        var url = "/data/{{symbol}}?sales=" + sales;
+        $.getJSON(url, function(response){
+            var datas2 = [];
+            for (var i = 0; i < response.datas_2.length; i++) {
+                datas2.push({x: response.datas_2[i].update_date,
+                            y: response.datas_2[i].real_profit})
+                        }
+            console.log(datas2);
+            const updatdate = {
+            datasets : [{
+            label : 'Real Profit',
+            data : datas2}]};
+            saleschart1.config.data = updatdate;
+                
+            saleschart1.update();})};
+
+
+    changeprofit()
+    changesales()
+
+
     </script>
+
+
 
 <div class="container">
   <head>
@@ -430,7 +476,6 @@
 function initMap() {
     var lat = {{lat}}
     var lng = {{lng}}
-    console.log(lat)
   // The location of Uluru
   var uluru = {lat: lat, lng: lng};
   // The map, centered at Uluru
@@ -451,6 +496,10 @@ function initMap() {
   </body>
 </div>
 
+
+
+
+
 <section class="page-section bg-primary text-white m-3" id="about">
     <div class="container">
         <!-- About Section Heading-->
@@ -467,7 +516,11 @@ function initMap() {
                 당신이 잠든 사이 일어난 정보를 전달 드립니다.</p></div>
         <div class="row">
             <div class="col-lg-12 ms-auto text-center"><p class="lead">
-                S&P500에 대한 정보입니다.</p></div>
+<<<<<<< HEAD
+                {{name}} 에 대한 정보입니다.</p></div>
+=======
+                {{name}}에 대한 정보입니다.</p></div>
+>>>>>>> 79a756cde812de4e28b4457e59484b264830c085
         <!-- <div class="row">
             <div class="col-lg-12 ms-auto text-center"><p class="lead">
                         Beta version </p></div>

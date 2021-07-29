@@ -1,13 +1,15 @@
 from flask import *
 from app.modules import MysqlModule
 from app import app
+import pickle
 
 @app.route('/SP500')
 def sp():
+<<<<<<< HEAD
     db_class= MysqlModule.Database()
 
 ## 1. s&p500 종가 시계열 그래프
-    sql1 = "SELECT * \
+    sql1 = "SELECT date_format(daily.Date, '%%Y-%%m-%%d') as Date, Close \
     FROM daily \
     WHERE Symbol = 'US500';"
     data1 = db_class.executeAll(sql1)
@@ -92,7 +94,11 @@ def sp():
 
 
 
+=======
+>>>>>>> 79a756cde812de4e28b4457e59484b264830c085
 
+    with open('datas/datas.pickle', 'rb') as f:
+        (capital, sector, volumes, sect, y_closed, x_label, table4, table3, table2, table1) = pickle.load(f)
 
     
     return render_template('index_sp.html', table1=table1,table2=table2,table3=table3,table4=table4, x_data=x_label, y_data=y_closed, x_data2=sect, y_data2=volumes, x_data3=sector,y_data3=capital)
