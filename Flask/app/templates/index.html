@@ -27,7 +27,8 @@
             </div>
         </div>
     </nav>
-<header class="masthead bg-primary text-white text-center">
+<!-- <header class="masthead bg-primary text-white text-center"> -->
+<header class="masthead text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <h1 class="masthead-heading text-uppercase mb-0">{{symbol}}      {{name}}</h1>
         <div class="divider-custom divider-light">
@@ -39,6 +40,8 @@
         <p class="masthead-subheading font-weight-light mb-0 text-left">INDUSTRY  {{industry}}</p>
     </div>
 </header>
+<script>$(".masthead").css("background",'{{color}}'); </script>
+
 
 <chart class>
     <div class="container">
