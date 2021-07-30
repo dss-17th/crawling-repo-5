@@ -94,31 +94,20 @@
                             <!--mychart 선언-->
                             <div class="container"> 
                                 <div class='row'>
-                                    <div class='col-lg-6'>
+                                    <div class='col-lg-6 text-center pb-5'>
                                         <canvas id="myChartone" width="400" height="350"></canvas> 
+                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                            <button type="button" class="btn btn-outline-primary" id="week">Week</button>
+                                            <button type="button" class="btn btn-outline-primary" id="month">Month</button>
+                                            <button type="button" class="btn btn-outline-primary" id="month3">3 Month</button>
+                                            <button type="button" class="btn btn-outline-primary" id="year">Year</button>
+                                            <button type="button" class="btn btn-outline-primary" id="year5">5 Year</button>
+                                        </div>
                                     </div>
                                     <div class='col-lg-6'>
                                         <canvas id="myCharttwo" width="400" height="380"></canvas> 
                                     </div>
-                                    <div class="row">
-                                        <div class="row justify-content-center m-4">
-                                            <div class="col-md-6 text-center">
-                                                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <button type="button" class="btn btn-outline-primary" id="week">Week</button>
-                                                    <button type="button" class="btn btn-outline-primary" id="month">Month</button>
-                                                    <button type="button" class="btn btn-outline-primary" id="month3">3 Month</button>
-                                                    <button type="button" class="btn btn-outline-primary" id="year">Year</button>
-                                                    <button type="button" class="btn btn-outline-primary" id="year5">5 Year</button>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 text-center">
-                                                <!-- <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                    <button type="button" class="btn btn-outline-primary" id="sector">Sector</button>
-                                                    <button type="button" class="btn btn-outline-primary" id="industry">Industry</button>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         
@@ -146,7 +135,7 @@
                                         labels : {{ x_data | tojson }},
                                         datasets : [{
                                             label : 'Close',
-                                            backgroundColor: 'rgba(54, 162, 235, 0.3)', 
+                                            backgroundColor: 'rgba(54, 162, 235, 0.2)', 
                                             borderColor: 'rgb(54, 162, 235, 0.0)',
                                             data :{{ y_data | tojson }}
                                         }]
@@ -181,18 +170,14 @@
                                         'rgba(54, 162, 235, 0.3)', 
                                         'rgba(255, 206, 86, 0.3)', 
                                         'rgba(75, 192, 192, 0.3)', 
-                                        'rgba(153, 102, 255, 0.3)', 
                                         'rgba(132, 159, 235, 0.3)', 
-                                        'rgba(255, 159, 64, 0.3)',
-                                        'rgba(102, 192, 206, 0.3)'], 
+                                        ], 
                                         borderColor: ['rgb(255, 99, 132,0.3)', 
                                         'rgba(54, 162, 235, 0.3)', 
                                         'rgba(255, 206, 86, 0.3)', 
                                         'rgba(75, 192, 192, 0.3)', 
-                                        'rgba(153, 102, 255, 0.3)', 
                                         'rgba(132, 159, 235, 0.3)', 
-                                        'rgba(255, 159, 64, 0.3)',
-                                        'rgba(102, 192, 206, 0.3)'],
+                                        ],
                                         data: {{ y_data2 | tojson }}, 
                                         }] 
                                     }, 
@@ -428,7 +413,7 @@
                     <div class='container-fluid'>
                         <div class='row'>
                             <div class='col-12'>
-                                <h5 class='text-secondary text-center mb-3 pt-5'>S&P500 Sector-Total</h5>
+                                <h5 class='text-secondary text-center mb-3 pt-5 pb-4'>S&P500 Sector-Total</h5>
                                 <canvas id="myChartthree" width="600" height="300"></canvas> 
                             </div>
                         </div>
@@ -439,25 +424,25 @@
                     var ctxthree = document.getElementById('myChartthree').getContext('2d');
                     
                     var chartthree = new Chart(ctxthree, { 
-                        type : 'pie',
+                        type : 'polarArea',
                         data : {
                             labels : {{x_data3 | tojson }},
                             datasets : [{
                                 label : 'Close',
-                                backgroundColor: [ 'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)', 
-                                'rgba(255, 206, 86, 0.2)', 
-                                'rgba(75, 192, 192, 0.2)', 
-                                'rgba(153, 102, 255, 0.2)', 
-                                'rgba(132, 159, 235, 0.2)', 
-                                'rgba(255, 159, 64, 0.2)'], 
-                                borderColor: ['rgb(255, 99, 132, 0.2)', 
-                                'rgba(54, 162, 235, 0.2)', 
-                                'rgba(255, 206, 86, 0.2)', 
-                                'rgba(75, 192, 192, 0.2)', 
-                                'rgba(153, 102, 255, 0.2)', 
-                                'rgba(132, 159, 235, 0.2)', 
-                                'rgba(255, 159, 64, 0.2)'],
+                                backgroundColor: [ 'rgba(255, 99, 132, 0.3)',
+                                'rgba(54, 162, 235, 0.3)', 
+                                'rgba(255, 206, 86, 0.3)', 
+                                'rgba(75, 192, 192, 0.3)', 
+                                'rgba(153, 102, 255, 0.3)', 
+                                'rgba(132, 159, 235, 0.3)', 
+                                'rgba(255, 159, 64, 0.3)'], 
+                                borderColor: ['rgb(255, 99, 132, 0.3)', 
+                                'rgba(54, 162, 235, 0.3)', 
+                                'rgba(255, 206, 86, 0.3)', 
+                                'rgba(75, 192, 192, 0.3)', 
+                                'rgba(153, 102, 255, 0.3)', 
+                                'rgba(132, 159, 235, 0.3)', 
+                                'rgba(255, 159, 64, 0.3)'],
                                 data : {{ y_data3 | tojson }},
                                 
                             }]
@@ -470,11 +455,12 @@
                             }
                             },
                             responsive: true,
-                            plugins: {
+                            
                             legend: {
-                                position: 'top',
+                                position: 'bottom',
+                                
                             },
-                            }
+                            
                         },
                     });
 
