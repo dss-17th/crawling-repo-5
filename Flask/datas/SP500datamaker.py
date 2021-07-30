@@ -4,7 +4,7 @@ import pickle
 db_class= MysqlModule.Database()
 
 ## 1. s&p500 종가 시계열 그래프
-sql1 = "SELECT * \
+sql1 = f"SELECT date_format(daily.Date, '%%Y-%%m-%%d') as Date, Close \
 FROM daily \
 WHERE Symbol = 'US500';"
 data1 = db_class.executeAll(sql1)
