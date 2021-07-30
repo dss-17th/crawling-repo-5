@@ -57,7 +57,7 @@ app.config.update(TEMPLATES_AUTO_RELOAD=True, DEBUG=True,)
 #     return render_template("index.html")
 
 from app.views import AAPL, apis
-from app.views import SP500
+from app.views import SP500, default
 
 # @app.route("/predict")
 # def predict():

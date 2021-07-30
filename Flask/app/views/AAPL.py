@@ -6,7 +6,9 @@ import pandas as pd
 @app.route("/<symbol>")
 def page(symbol):
     db_class= MysqlModule.Database()
-
+    symbol = symbol.upper()
+    if symbol == 'SP500' :
+        return redirect('/SP500')
     sql = f"SELECT * \
 	FROM News \
 	WHERE Symbol = '{symbol}';"
