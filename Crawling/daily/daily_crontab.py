@@ -50,11 +50,14 @@ before_yesterday = datetime.today() - timedelta(2)
 apple = fdr.DataReader("AAPL",start="2021-07-30", end="2021-07-30") # fdr 기존 양식에 symbol_list를 추가하기 위해 base_table 생성
 dfs = apple
 dfs['Symbol'] = "AAPL"
-for i in symbol_list: # apple data frame에 symbol_list 추가작업 진행
-    data = fdr.DataReader(i, start=yesterday, end=yesterday)
-    df = pd.DataFrame(data)
-    df['Symbol'] = i
-    dfs = pd.concat([df,dfs])
+for i in symbol_list:
+    try:# apple data frame에 symbol_list 추가작업 진행
+        data = fdr.DataReader(i, end=before_yesterday)
+        df = pd.DataFrame(data)
+        df['Symbol'] = i
+        dfs = pd.concat([df,dfs])
+    except:
+        pass
 
 dfs = dfs[['Symbol', 'Close', "Open", "High", "Low", "Volume", "Change"]]
 dfs = dfs.reset_index() # reset_index()를 사용해 date column에 위치하게 정렬
