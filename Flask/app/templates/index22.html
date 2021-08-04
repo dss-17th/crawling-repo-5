@@ -268,11 +268,11 @@
                     datas.push({x: response.data3[i].Symbol,
                         y: response.data3[i].market_capitalization})
                     if (response.data3[i].market_capitalization > 0){
-                        colors.push('rgb(255, 99, 132, 0.3');}
+                        colors.push('rgb(255,64,64');}
                     else if (response.data3[i].market_capitalization < 0){
-                        colors.push('rgb(54, 162, 235, 0.3');}
+                        colors.push('rgb(64,64,255');}
                     else{
-                        colors.push('rba(127,127,127,0.5');}
+                        colors.push('rba(127,127,127');}
                     };
                 console.log(datas);
                 const updatdate = {
@@ -296,11 +296,11 @@
                     datas.push({x: response.data3[i].Symbol,
                         y: response.data3[i].market_capitalization})
                     if (response.data3[i].market_capitalization > 0){
-                        colors.push('rgb(255, 99, 132, 0.3');}
+                        colors.push('rgb(255,64,64');}
                     else if (response.data3[i].market_capitalization < 0){
-                        colors.push('rgb(54, 162, 235, 0.3');}
+                        colors.push('rgb(64,64,255');}
                     else{
-                        colors.push('rba(127,127,127,0.5');}
+                        colors.push('rba(127,127,127');}
                     };
                 console.log(datas);
                 const updatdate = {
@@ -383,7 +383,7 @@
     </section>
     </div>
 </news>
-<div class="container pt-5 pb-5">
+<div class="container">
     <div class="row">
         <div class="col-lg-5">
             <canvas id="profitchart" width="200", height="165"></canvas>
@@ -451,14 +451,6 @@
             const updatdate = {
             datasets : [{
             label : 'Profit',
-            backgroundColor: ['rgba(54, 162, 235, 0.3)',
-            'rgba(54, 162, 235, 0.4)', 
-            'rgba(54, 162, 235, 0.5)', 
-            'rgba(54, 162, 235, 0.6)'], 
-            borderColor: ['rgb(54, 162, 235, 0.3)', 
-            'rgba(54, 162, 235, 0.4)', 
-            'rgba(54, 162, 235, 0.5)', 
-            'rgba(54, 162, 235, 0.6)'],
             data : datas1}]};
             profitchart1.config.data = updatdate;
                 
@@ -478,14 +470,6 @@
             const updatdate = {
             datasets : [{
             label : 'Real Profit',
-            backgroundColor: ['rgba(102, 192, 206, 0.3)',
-            'rgba(102, 192, 206, 0.4)', 
-            'rgba(102, 192, 206, 0.5)', 
-            'rgba(102, 192, 206, 0.6)'], 
-            borderColor: ['rgb(102, 192, 206, 0.3)', 
-            'rgba(102, 192, 206, 0.4)', 
-            'rgba(102, 192, 206, 0.5)', 
-            'rgba(102, 192, 206, 0.6)'],
             data : datas2}]};
             saleschart1.config.data = updatdate;
                 
