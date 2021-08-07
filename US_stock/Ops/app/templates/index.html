@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TOS Stock</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.0/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60fa2906d6dad394"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark text-uppercase" id="mainNav">
+        <div class="container">
+            <h1><a class="navbar-brand" href="../SP500">토스 해외증권</a></h1>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!-- <header class="masthead bg-primary text-white text-center"> -->
+<header class="masthead text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1 class="masthead-heading text-uppercase mb-0">{{symbol}}      {{name}}</h1>
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <p class="masthead-subheading font-weight-light mb-0 text-left">SECTOR  {{sector}}</p>
+        <p class="masthead-subheading font-weight-light mb-0 text-left">INDUSTRY  {{industry}}</p>
+    </div>
+</header>
+<script>$(".masthead").css("background",'{{color}}'); </script>
+
+
+<chart class>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <canvas id="myChartone" width="=600" height='150'></canvas>
+            </div>
+            <div class="col-lg-5">
+                <canvas id="myCharttwo" width="=600" height='215'></canvas>
+            </div>
+                <div class="row">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 text-center">
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <button type="button" class="btn btn-outline-primary" id="week">Week</button>
+                                <button type="button" class="btn btn-outline-primary" id="month">Month</button>
+                                <button type="button" class="btn btn-outline-primary" id="month3">3 Month</button>
+                                <button type="button" class="btn btn-outline-primary" id="year">Year</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <button type="button" class="btn btn-outline-primary" id="sector">Sector</button>
+                                <button type="button" class="btn btn-outline-primary" id="industry">Industry</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- <div class="col-lg-4">
+                <canvas id="myChartthree" width="=600" height='400'></canvas>
+            </div>
+            <div class="col-lg-8">
+                <canvas id="myChartfour" width="=600" height='190'></canvas>
+            </div> -->
+        </div>
+    </div>
+    <script>
+        var Week = document.getElementById('week');
+        var Month = document.getElementById('month');
+        var Month3 = document.getElementById('month3');
+        var Year = document.getElementById('year');
+
+        Week.addEventListener('click', changeWeek);
+        Month.addEventListener('click', changeMonth);
+        Month3.addEventListener('click', changeMonth3);
+        Year.addEventListener('click', changeYear);
+
+        var Sector = document.getElementById('sector');
+        var Industry = document.getElementById('industry');
+
+        Sector.addEventListener('click', changeSector);
+        Industry.addEventListener('click', changeIndustry);
+
+        var myChartone = document.getElementById('myChartone').getContext('2d');
+        var myCharttwo = document.getElementById('myCharttwo').getContext('2d');
+        // var myChartthree = document.getElementById('myChartthree').getContext('2d');
+        // var myChartfour = document.getElementById('myChartfour').getContext('2d');
+
+        var myChartone1 = new Chart(myChartone, {
+                type : 'line',
+                data : {
+                     datasets : [{
+                        label : 'Close',
+                        data : [{x:"-", y:0}],
+                        borderWidth: 20,
+                        radius: 10
+                                }]
+                        },
+                        // options: {
+                        //         animation,
+                        //         scales: {x: {type: 'linear'}}
+                        //     }
+                            });
+        var myCharttwo2 = new Chart(myCharttwo, {
+                type : 'bar',
+                data : {
+                    datasets : [{
+                        label : 'Market capitalization',
+                        data : [{y:0, x:"-"}]
+                                }]
+                        },
+                        options: {
+                                indexAxis: 'x',
+                                elements: {
+                                    bar: {
+                                        borderWidth: 1,
+                                    }},
+                                responsive: true,
+                                plugins: {
+                                legend: {
+                                    position: 'top',
+                                }}
+                            }
+                    });     
+        // var myChartthree = new Chart(myChartthree, {
+        //         type : 'bar',
+        //         data : {
+        //             labels : ['a', 'b', 'c', 'd',' e'],
+        //             datasets : [{
+        //                 label : 'ChartJS',
+        //                 data : [1000,300,200,1000,10000]
+        //             }]
+        //         },
+        //         options: {
+        //             responsive:true,
+        //             scales: {
+        //                 yAxes : [{
+        //                     ticks: {
+        //                         beginAtzero : true
+        //                     }
+        //                 }]
+        //             }
+        //         }
+        // });
+        // var myChartfour = new Chart(myChartfour, {
+        //         type : 'bar',
+        //         data : {
+        //             labels : ['a', 'b', 'c', 'd',' e'],
+        //             datasets : [{
+        //                 label : 'ChartJS',
+        //                 data : [1000,300,200,1000,10000]
+        //             }]
+        //         },
+        //         options: {
+        //             responsive:true,
+        //             scales: {
+        //                 yAxes : [{
+        //                     ticks: {
+        //                         beginAtzero : true
+        //                     }
+        //                 }]
+        //             }
+        //         }
+        // });
+        function changeWeek(){
+            var term = 'week';
+            console.log(term);
+            var url = "/data/{{symbol}}?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
+                const updatdate = {
+                datasets : [{
+                label : 'Close',
+                data : datas,
+                borderColor: '{{color}}'}]};
+                myChartone1.config.data = updatdate;
+                
+                myChartone1.update();})};
+        
+        function changeMonth(){
+            var term = 'month';
+            console.log(term);
+            var url = "/data/{{symbol}}?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
+                const updatdate = {
+                datasets : [{
+                label : 'Close',
+                data : datas,
+                borderColor: '{{color}}'}]};
+                myChartone1.config.data = updatdate;
+                
+                myChartone1.update();})};
+
+        function changeMonth3(){
+            var term = 'month3';
+            console.log(term);
+            var url = "/data/{{symbol}}?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
+                const updatdate = {
+                datasets : [{
+                label : 'Close',
+                data : datas,
+                borderColor: '{{color}}'}]};
+                myChartone1.config.data = updatdate;
+                
+                myChartone1.update();})};
+        
+        function changeYear(){
+            var term = 'year';
+            console.log(term);
+            var url = "/data/{{symbol}}?term=" + term;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                for (var i = 0; i < response.data2.length; i++) {
+                    datas.push({x: response.data2[i].Date,
+                                y: response.data2[i].Close})}
+                console.log(datas);
+                const updatdate = {
+                datasets : [{
+                label : 'Close',
+                data : datas,
+                borderColor: '{{color}}'}]};
+                myChartone1.config.data = updatdate;
+                
+                myChartone1.update();})};
+
+        function changeSector(){
+            var value = 'Sector';
+            console.log(value);
+            var url = "/data/{{symbol}}?value=" + value;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                var colors = [];
+                for (var i = 0; i < response.data3.length; i++) {
+                    datas.push({x: response.data3[i].Symbol,
+                        y: response.data3[i].market_capitalization})
+                    if (response.data3[i].market_capitalization > 0){
+                        colors.push('rgb(255, 99, 132, 0.3');}
+                    else if (response.data3[i].market_capitalization < 0){
+                        colors.push('rgb(54, 162, 235, 0.3');}
+                    else{
+                        colors.push('rba(127,127,127,0.5');}
+                    };
+                console.log(datas);
+                const updatdate = {
+                    datasets : [{
+                        label : 'Market capitalization',
+                        data : datas,
+                        backgroundColor:colors}]};
+                myCharttwo2.config.data = updatdate;
+                
+                myCharttwo2.update();})};        
+            
+        function changeIndustry(){
+            var value = 'Industry';
+            console.log(value);
+            var url = "/data/{{symbol}}?value=" + value;
+            $.getJSON(url, function(response){
+                console.log(response);
+                var datas = [];
+                var colors = [];
+                for (var i = 0; i < response.data3.length; i++) {
+                    datas.push({x: response.data3[i].Symbol,
+                        y: response.data3[i].market_capitalization})
+                    if (response.data3[i].market_capitalization > 0){
+                        colors.push('rgb(255, 99, 132, 0.3');}
+                    else if (response.data3[i].market_capitalization < 0){
+                        colors.push('rgb(54, 162, 235, 0.3');}
+                    else{
+                        colors.push('rba(127,127,127,0.5');}
+                    };
+                console.log(datas);
+                const updatdate = {
+                    datasets : [{
+                        label : 'Market capitalization',
+                        data : datas,
+                        backgroundColor:colors}]};
+                myCharttwo2.config.data = updatdate;
+                
+                myCharttwo2.update();})};
+
+        changeWeek()
+        changeSector()
+        </script>
+</chart>
+<news class>
+    <div class="row">
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="page-section-heading text-center text-uppercase text-secondary m-5">NEWS</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4 mb-12">
+                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <colgroup>
+                    <col align="center" width="300px"/>
+                    <col width="1200px"/>
+                    <col width="900px"/>
+                    <col width="300px"/>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col" style="text-align: center;">No.</th>
+                    <th scope="col" style="text-align: center;">Title</th>
+                    <th scope="col" style="text-align: center;">Sub title</th>
+                    <th scope="col" style="text-align: center;">Link</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row" style="text-align: center;">1</th>
+                    <td>{{data1[::-1][0].title[:60]}}</td>
+                    <td align="center">{{data1[::-1][0].subtitle[:60]}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][0].link}}'" style="cursor:pointer;">LINK</td>
+                </tr>
+                <tr>
+                    <th scope="row" style="text-align: center;">2</th>
+                    <td>{{data1[::-1][1].title[:60]}}</td>
+                    <td align="center">{{data1[::-1][1].subtitle[:60]}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][1].link}}'" style="cursor:pointer;">LINK</td>
+                </tr>
+                <tr>
+                    <th scope="row" style="text-align: center;">3</th>
+                    <td>{{data1[::-1][2].title[:60]}}</td>
+                    <td align="center">{{data1[::-1][2].subtitle[:60]}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][2].link}}'" style="cursor:pointer;">LINK</td>
+                </tr>
+                <tr>
+                    <th scope="row" style="text-align: center;">4</th>
+                    <td>{{data1[::-1][3].title[:60]}}</td>
+                    <td align="center">{{data1[::-1][3].subtitle[:60]}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][3].link}}'" style="cursor:pointer;">LINK</td>
+                </tr>
+                <tr>
+                    <th scope="row" style="text-align: center;">5</th>
+                    <td>{{data1[::-1][4].title[:60]}}</td>
+                    <td align="center">{{data1[::-1][4].subtitle[:60]}}</td>
+                    <td align="center" onClick="location.href='{{data1[::-1][4].link}}'" style="cursor:pointer;">LINK</td> 
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </color>
+    </section>
+    </div>
+</news>
+<div class="container pt-5 pb-5">
+    <div class="row">
+        <div class="col-lg-5">
+            <canvas id="profitchart" width="200", height="165"></canvas>
+        </div>
+        <div class="col-lg-7">
+            <canvas id="saleschart" width="600", height="345"></canvas>
+        </div>
+    </div>
+</div>
+<script> 
+
+    var profitchart = document.getElementById('profitchart');
+    var saleschart = document.getElementById('saleschart'); 
+
+    var profitchart1 = new Chart(profitchart, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                label : '',
+                data: [{x:"-", y:0}],
+                borderWidth: 1 
+                }]
+             },
+            options: { scales: 
+                        { yAxes: [{
+                             ticks: {
+                                  beginAtZero: true 
+                                } 
+                            }] 
+                        } 
+                    } 
+                });
+    
+    var saleschart1 = new Chart(saleschart, 
+    { type: 'bar',
+        data: {
+            datasets: [
+                {label: 'Sales', 
+                data: [{x:"-", y:0}],
+                borderWidth: 1 
+                }
+                ]
+             },
+            options: { scales: 
+                        { yAxes: [{
+                             ticks: {
+                                  beginAtZero: true 
+                                } 
+                            }] 
+                        } 
+                    } 
+                });
+
+    function changeprofit(){
+        var profit = 'profit'
+        console.log(profit);
+        var url = "/data/{{symbol}}?profit=" + profit;
+        $.getJSON(url, function(response){
+            var datas1 = [];
+            for (var i = 0; i < response.datas_1.length; i++) {
+                datas1.push({x: response.datas_1[i].update_date,
+                            y: response.datas_1[i].profit})
+                        }
+            console.log(datas1);
+            const updatdate = {
+            datasets : [{
+            label : 'Profit',
+            backgroundColor: ['rgba(54, 162, 235, 0.3)',
+            'rgba(54, 162, 235, 0.4)', 
+            'rgba(54, 162, 235, 0.5)', 
+            'rgba(54, 162, 235, 0.6)'], 
+            borderColor: ['rgb(54, 162, 235, 0.3)', 
+            'rgba(54, 162, 235, 0.4)', 
+            'rgba(54, 162, 235, 0.5)', 
+            'rgba(54, 162, 235, 0.6)'],
+            data : datas1}]};
+            profitchart1.config.data = updatdate;
+                
+            profitchart1.update();})};
+
+    function changesales(){
+        var sales = 'sales'
+        console.log(sales);
+        var url = "/data/{{symbol}}?sales=" + sales;
+        $.getJSON(url, function(response){
+            var datas2 = [];
+            for (var i = 0; i < response.datas_2.length; i++) {
+                datas2.push({x: response.datas_2[i].update_date,
+                            y: response.datas_2[i].real_profit})
+                        }
+            console.log(datas2);
+            const updatdate = {
+            datasets : [{
+            label : 'Real Profit',
+            backgroundColor: ['rgba(102, 192, 206, 0.3)',
+            'rgba(102, 192, 206, 0.4)', 
+            'rgba(102, 192, 206, 0.5)', 
+            'rgba(102, 192, 206, 0.6)'], 
+            borderColor: ['rgb(102, 192, 206, 0.3)', 
+            'rgba(102, 192, 206, 0.4)', 
+            'rgba(102, 192, 206, 0.5)', 
+            'rgba(102, 192, 206, 0.6)'],
+            data : datas2}]};
+            saleschart1.config.data = updatdate;
+                
+            saleschart1.update();})};
+
+
+    changeprofit()
+    changesales()
+
+
+    </script>
+
+
+
+<div class="container">
+  <head>
+    <style>
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+    <h3 class="page-section-heading text-center text-uppercase text-secondary m-2">Head Office</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+    var lat = {{lat}}
+    var lng = {{lng}}
+  // The location of Uluru
+  var uluru = {lat: lat, lng: lng};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 12, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC_k3Xyf1wcrkVXgvF7pFkKxERw4vNc15Q&callback=initMap'>
+    </script>
+  </body>
+</div>
+
+
+
+
+
+<section class="page-section bg-primary text-white m-3" id="about">
+    <div class="container">
+        <!-- About Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- About Section Content-->
+        <div class="row">
+            <div class="col-lg-12 ms-auto text-center"><p class="lead">
+                당신이 잠든 사이 일어난 정보를 전달 드립니다.</p></div>
+        <div class="row">
+            <div class="col-lg-12 ms-auto text-center"><p class="lead">
+                {{name}} 에 대한 정보입니다.</p></div>
+        <!-- <div class="row">
+            <div class="col-lg-12 ms-auto text-center"><p class="lead">
+                        Beta version </p></div>
+            <div class="col-lg-4 me-auto text-center"><p class="lead">S&P500에 대한 정보입니다.</p></div>
+        </div>
+        About Section Button-->
+        <div class="text-center mt-4">
+            <a class="btn btn-xl btn-outline-light" href="https://www.investing.com/">
+                <i class="fas fa-download me-1"></i>
+                Free Download!
+
+            </a>
+        </div>
+    </div>
+</section> 
+<div class="copyright py-4 bg-dark text-center text-white-50">
+    <div class="container"><small>Copyright &copy; Your Website 2021</small></div>
+</div>
+</body>
+</html>
