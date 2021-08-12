@@ -48,8 +48,8 @@
 
 
 ## 8. 역할
-김상구 - 크롤링 / Flask <br/>
-조경수 - HTML / Flask <br/>
+김상구 - 크롤링 / Flask / packaging / SQL <br/>
+조경수 - HTML / Flask /<br/>
 이지영 - 데이터베이스 / HTML / README <br/>
 
 ## 9. 우리가 배운점, 그리고...
